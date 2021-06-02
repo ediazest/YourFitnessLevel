@@ -1,0 +1,26 @@
+disabled_rules:
+  - file_length
+  - identifier_name
+  - force_cast
+  - force_try
+  - force_unwrapping
+  - function_body_length
+  - function_parameter_count
+  - implicitly_unwrapped_optional
+  - large_tuple
+  - line_length
+  - opening_braces
+  - type_body_length
+  - type_name
+  - unused_import
+  - unused_setter_value
+  - weak_delegate
+nesting:
+    type_level:
+      warning: 3
+opt_in_rules:
+  - closure_spacing
+  - fallthrough
+  - fatal_error_message
+  - operator_usage_whitespace
+  - overridden_super_call

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,17 +11,18 @@
 		DC12FD002667F9C300602376 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FCFF2667F9C300602376 /* ContentView.swift */; };
 		DC12FD022667F9C500602376 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC12FD012667F9C500602376 /* Assets.xcassets */; };
 		DC12FD052667F9C500602376 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC12FD042667F9C500602376 /* Preview Assets.xcassets */; };
+		DC12FD332668074400602376 /* Injected.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD322668074400602376 /* Injected.swift */; };
+		DC12FD35266807B600602376 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD34266807B600602376 /* DependencyContainer.swift */; };
+		DC12FD3726680FDA00602376 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD3626680FDA00602376 /* Dependencies.swift */; };
+		DC12FD392668108700602376 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD382668108700602376 /* AppDelegate.swift */; };
+		DC12FD3F266813FE00602376 /* AppContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD3E266813FE00602376 /* AppContainerTests.swift */; platformFilter = ios; };
+		DC12FD4326681E9800602376 /* InjectedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD4226681E9800602376 /* InjectedTests.swift */; };
+		DC12FD4726681F0C00602376 /* DependencyContainerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD4626681F0C00602376 /* DependencyContainerMock.swift */; };
+		DC12FD4A2668228600602376 /* TestDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD492668228600602376 /* TestDependencyContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		DC12FD0C2667F9C500602376 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DC12FCF22667F9C300602376 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DC12FCF92667F9C300602376;
-			remoteInfo = YourFitnessLevel;
-		};
-		DC12FD172667F9C500602376 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DC12FCF22667F9C300602376 /* Project object */;
 			proxyType = 1;
@@ -39,8 +40,14 @@
 		DC12FD062667F9C500602376 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DC12FD0B2667F9C500602376 /* YourFitnessLevelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourFitnessLevelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC12FD112667F9C500602376 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DC12FD162667F9C500602376 /* YourFitnessLevelUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YourFitnessLevelUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DC12FD1C2667F9C500602376 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DC12FD322668074400602376 /* Injected.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Injected.swift; sourceTree = "<group>"; };
+		DC12FD34266807B600602376 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		DC12FD3626680FDA00602376 /* Dependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependencies.swift; sourceTree = "<group>"; };
+		DC12FD382668108700602376 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DC12FD3E266813FE00602376 /* AppContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContainerTests.swift; sourceTree = "<group>"; };
+		DC12FD4226681E9800602376 /* InjectedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedTests.swift; sourceTree = "<group>"; };
+		DC12FD4626681F0C00602376 /* DependencyContainerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainerMock.swift; sourceTree = "<group>"; };
+		DC12FD492668228600602376 /* TestDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDependencyContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,13 +65,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DC12FD132667F9C500602376 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -73,7 +73,6 @@
 			children = (
 				DC12FCFC2667F9C300602376 /* YourFitnessLevel */,
 				DC12FD0E2667F9C500602376 /* YourFitnessLevelTests */,
-				DC12FD192667F9C500602376 /* YourFitnessLevelUITests */,
 				DC12FCFB2667F9C300602376 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -83,7 +82,6 @@
 			children = (
 				DC12FCFA2667F9C300602376 /* YourFitnessLevel.app */,
 				DC12FD0B2667F9C500602376 /* YourFitnessLevelTests.xctest */,
-				DC12FD162667F9C500602376 /* YourFitnessLevelUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -110,16 +108,9 @@
 			isa = PBXGroup;
 			children = (
 				DC12FD112667F9C500602376 /* Info.plist */,
+				DC12FD3A2668130600602376 /* Tests */,
 			);
 			path = YourFitnessLevelTests;
-			sourceTree = "<group>";
-		};
-		DC12FD192667F9C500602376 /* YourFitnessLevelUITests */ = {
-			isa = PBXGroup;
-			children = (
-				DC12FD1C2667F9C500602376 /* Info.plist */,
-			);
-			path = YourFitnessLevelUITests;
 			sourceTree = "<group>";
 		};
 		DC12FD2A2668018700602376 /* Sources */ = {
@@ -127,7 +118,7 @@
 			children = (
 				DC12FD062667F9C500602376 /* Info.plist */,
 				DC12FCFF2667F9C300602376 /* ContentView.swift */,
-				DC12FCFD2667F9C300602376 /* YourFitnessLevelApp.swift */,
+				DC12FD2C2668024100602376 /* Application */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -140,6 +131,77 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		DC12FD2C2668024100602376 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD382668108700602376 /* AppDelegate.swift */,
+				DC12FCFD2667F9C300602376 /* YourFitnessLevelApp.swift */,
+				DC12FD2D2668029E00602376 /* DependencyInjection */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DC12FD2D2668029E00602376 /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD3626680FDA00602376 /* Dependencies.swift */,
+				DC12FD34266807B600602376 /* DependencyContainer.swift */,
+				DC12FD322668074400602376 /* Injected.swift */,
+			);
+			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		DC12FD3A2668130600602376 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD3B2668131D00602376 /* Application */,
+				DC12FD4426681ECB00602376 /* TestUtils */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		DC12FD3B2668131D00602376 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD3C2668132700602376 /* DependencyInjection */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		DC12FD3C2668132700602376 /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD3E266813FE00602376 /* AppContainerTests.swift */,
+				DC12FD4226681E9800602376 /* InjectedTests.swift */,
+			);
+			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		DC12FD4426681ECB00602376 /* TestUtils */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD482668226E00602376 /* DependencyInjection */,
+				DC12FD4526681EF700602376 /* Mocks */,
+			);
+			path = TestUtils;
+			sourceTree = "<group>";
+		};
+		DC12FD4526681EF700602376 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD4626681F0C00602376 /* DependencyContainerMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		DC12FD482668226E00602376 /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD492668228600602376 /* TestDependencyContainer.swift */,
+			);
+			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -150,12 +212,15 @@
 				DC12FCF62667F9C300602376 /* Sources */,
 				DC12FCF72667F9C300602376 /* Frameworks */,
 				DC12FCF82667F9C300602376 /* Resources */,
+				DC12FD31266805E900602376 /* SwiftLint */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = YourFitnessLevel;
+			packageProductDependencies = (
+			);
 			productName = YourFitnessLevel;
 			productReference = DC12FCFA2667F9C300602376 /* YourFitnessLevel.app */;
 			productType = "com.apple.product-type.application";
@@ -178,24 +243,6 @@
 			productReference = DC12FD0B2667F9C500602376 /* YourFitnessLevelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		DC12FD152667F9C500602376 /* YourFitnessLevelUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DC12FD252667F9C500602376 /* Build configuration list for PBXNativeTarget "YourFitnessLevelUITests" */;
-			buildPhases = (
-				DC12FD122667F9C500602376 /* Sources */,
-				DC12FD132667F9C500602376 /* Frameworks */,
-				DC12FD142667F9C500602376 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DC12FD182667F9C500602376 /* PBXTargetDependency */,
-			);
-			name = YourFitnessLevelUITests;
-			productName = YourFitnessLevelUITests;
-			productReference = DC12FD162667F9C500602376 /* YourFitnessLevelUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -210,10 +257,7 @@
 					};
 					DC12FD0A2667F9C500602376 = {
 						CreatedOnToolsVersion = 12.5;
-						TestTargetID = DC12FCF92667F9C300602376;
-					};
-					DC12FD152667F9C500602376 = {
-						CreatedOnToolsVersion = 12.5;
+						LastSwiftMigration = 1250;
 						TestTargetID = DC12FCF92667F9C300602376;
 					};
 				};
@@ -227,13 +271,15 @@
 				Base,
 			);
 			mainGroup = DC12FCF12667F9C300602376;
+			packageReferences = (
+				DC12FD2E2668046000602376 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+			);
 			productRefGroup = DC12FCFB2667F9C300602376 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				DC12FCF92667F9C300602376 /* YourFitnessLevel */,
 				DC12FD0A2667F9C500602376 /* YourFitnessLevelTests */,
-				DC12FD152667F9C500602376 /* YourFitnessLevelUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -255,22 +301,40 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DC12FD142667F9C500602376 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		DC12FD31266805E900602376 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
 		};
-/* End PBXResourcesBuildPhase section */
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DC12FCF62667F9C300602376 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC12FD392668108700602376 /* AppDelegate.swift in Sources */,
 				DC12FD002667F9C300602376 /* ContentView.swift in Sources */,
+				DC12FD35266807B600602376 /* DependencyContainer.swift in Sources */,
 				DC12FCFE2667F9C300602376 /* YourFitnessLevelApp.swift in Sources */,
+				DC12FD332668074400602376 /* Injected.swift in Sources */,
+				DC12FD3726680FDA00602376 /* Dependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,13 +342,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DC12FD122667F9C500602376 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				DC12FD3F266813FE00602376 /* AppContainerTests.swift in Sources */,
+				DC12FD4726681F0C00602376 /* DependencyContainerMock.swift in Sources */,
+				DC12FD4A2668228600602376 /* TestDependencyContainer.swift in Sources */,
+				DC12FD4326681E9800602376 /* InjectedTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -293,13 +354,9 @@
 /* Begin PBXTargetDependency section */
 		DC12FD0D2667F9C500602376 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
+			platformFilter = ios;
 			target = DC12FCF92667F9C300602376 /* YourFitnessLevel */;
 			targetProxy = DC12FD0C2667F9C500602376 /* PBXContainerItemProxy */;
-		};
-		DC12FD182667F9C500602376 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DC12FCF92667F9C300602376 /* YourFitnessLevel */;
-			targetProxy = DC12FD172667F9C500602376 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -429,7 +486,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"YourFitnessLevel/Preview Content\"";
 				DEVELOPMENT_TEAM = G62HZCES4Y;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = YourFitnessLevel/Info.plist;
+				INFOPLIST_FILE = YourFitnessLevel/Sources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -451,7 +508,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"YourFitnessLevel/Preview Content\"";
 				DEVELOPMENT_TEAM = G62HZCES4Y;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = YourFitnessLevel/Info.plist;
+				INFOPLIST_FILE = YourFitnessLevel/Sources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -469,6 +526,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G62HZCES4Y;
 				INFOPLIST_FILE = YourFitnessLevelTests/Info.plist;
@@ -480,6 +538,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.applanticstudio.YourFitnessLevelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YourFitnessLevel.app/YourFitnessLevel";
@@ -491,6 +551,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G62HZCES4Y;
 				INFOPLIST_FILE = YourFitnessLevelTests/Info.plist;
@@ -502,49 +563,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.applanticstudio.YourFitnessLevelTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/YourFitnessLevel.app/YourFitnessLevel";
-			};
-			name = Release;
-		};
-		DC12FD262667F9C500602376 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G62HZCES4Y;
-				INFOPLIST_FILE = YourFitnessLevelUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.applanticstudio.YourFitnessLevelUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = YourFitnessLevel;
-			};
-			name = Debug;
-		};
-		DC12FD272667F9C500602376 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = G62HZCES4Y;
-				INFOPLIST_FILE = YourFitnessLevelUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.applanticstudio.YourFitnessLevelUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = YourFitnessLevel;
 			};
 			name = Release;
 		};
@@ -578,16 +600,18 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DC12FD252667F9C500602376 /* Build configuration list for PBXNativeTarget "YourFitnessLevelUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DC12FD262667F9C500602376 /* Debug */,
-				DC12FD272667F9C500602376 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DC12FD2E2668046000602376 /* XCRemoteSwiftPackageReference "SwiftLint" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/SwiftLint";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.43.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = DC12FCF22667F9C300602376 /* Project object */;
 }

@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct YourFitnessLevelApp: App {
+    // swiftlint:disable weak_delegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     var body: some Scene {
         WindowGroup {
             ContentView()
