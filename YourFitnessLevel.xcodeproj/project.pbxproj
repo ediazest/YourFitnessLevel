@@ -19,6 +19,11 @@
 		DC12FD4326681E9800602376 /* InjectedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD4226681E9800602376 /* InjectedTests.swift */; };
 		DC12FD4726681F0C00602376 /* DependencyContainerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD4626681F0C00602376 /* DependencyContainerMock.swift */; };
 		DC12FD4A2668228600602376 /* TestDependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD492668228600602376 /* TestDependencyContainer.swift */; };
+		DC12FD4E2668250200602376 /* SummaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD4D2668250200602376 /* SummaryView.swift */; };
+		DC12FD502668285C00602376 /* SummaryViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD4F2668285C00602376 /* SummaryViewState.swift */; };
+		DC12FD54266830A400602376 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD53266830A400602376 /* Category.swift */; };
+		DC12FD582668330700602376 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD572668330700602376 /* View.swift */; };
+		DC12FD5A2668345B00602376 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD592668345B00602376 /* CategoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +53,11 @@
 		DC12FD4226681E9800602376 /* InjectedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InjectedTests.swift; sourceTree = "<group>"; };
 		DC12FD4626681F0C00602376 /* DependencyContainerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainerMock.swift; sourceTree = "<group>"; };
 		DC12FD492668228600602376 /* TestDependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestDependencyContainer.swift; sourceTree = "<group>"; };
+		DC12FD4D2668250200602376 /* SummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryView.swift; sourceTree = "<group>"; };
+		DC12FD4F2668285C00602376 /* SummaryViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewState.swift; sourceTree = "<group>"; };
+		DC12FD53266830A400602376 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		DC12FD572668330700602376 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		DC12FD592668345B00602376 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +129,9 @@
 				DC12FD062667F9C500602376 /* Info.plist */,
 				DC12FCFF2667F9C300602376 /* ContentView.swift */,
 				DC12FD2C2668024100602376 /* Application */,
+				DC12FD512668307800602376 /* Domain */,
+				DC12FD552668326800602376 /* Extensions */,
+				DC12FD4B2668249800602376 /* Modules */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -200,6 +213,48 @@
 				DC12FD492668228600602376 /* TestDependencyContainer.swift */,
 			);
 			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		DC12FD4B2668249800602376 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD4C266824A100602376 /* Summary */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		DC12FD4C266824A100602376 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD4D2668250200602376 /* SummaryView.swift */,
+				DC12FD4F2668285C00602376 /* SummaryViewState.swift */,
+				DC12FD592668345B00602376 /* CategoryView.swift */,
+			);
+			path = Summary;
+			sourceTree = "<group>";
+		};
+		DC12FD512668307800602376 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD522668308000602376 /* Models */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		DC12FD522668308000602376 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD53266830A400602376 /* Category.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DC12FD552668326800602376 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD572668330700602376 /* View.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,8 +385,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC12FD392668108700602376 /* AppDelegate.swift in Sources */,
+				DC12FD4E2668250200602376 /* SummaryView.swift in Sources */,
+				DC12FD582668330700602376 /* View.swift in Sources */,
 				DC12FD002667F9C300602376 /* ContentView.swift in Sources */,
+				DC12FD502668285C00602376 /* SummaryViewState.swift in Sources */,
+				DC12FD5A2668345B00602376 /* CategoryView.swift in Sources */,
 				DC12FD35266807B600602376 /* DependencyContainer.swift in Sources */,
+				DC12FD54266830A400602376 /* Category.swift in Sources */,
 				DC12FCFE2667F9C300602376 /* YourFitnessLevelApp.swift in Sources */,
 				DC12FD332668074400602376 /* Injected.swift in Sources */,
 				DC12FD3726680FDA00602376 /* Dependencies.swift in Sources */,
