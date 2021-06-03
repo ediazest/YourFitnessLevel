@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var state = ContentViewState()
+
     var body: some View {
         TabView {
             summaryTab
             awardsTab
         }
+        .onAppear(perform: state.handleOnAppear)
     }
 
     private var summaryTab: some View {

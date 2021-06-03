@@ -22,10 +22,10 @@ final class TestDependencyContainer: DependencyContainer {
     }
 }
 
-private func createTestDependencies(_ dependencies: [Any]) {
+func createTestDependencies(_ dependencies: Any...) {
     DependencyContainerProvider.container = TestDependencyContainer(dependencies: dependencies)
 }
 
-public func removeTestDependencies() {
+func removeTestDependencies() {
     DependencyContainerProvider.container = nil
 }

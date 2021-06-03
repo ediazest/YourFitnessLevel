@@ -24,6 +24,29 @@
 		DC12FD54266830A400602376 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD53266830A400602376 /* Category.swift */; };
 		DC12FD582668330700602376 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD572668330700602376 /* View.swift */; };
 		DC12FD5A2668345B00602376 /* CategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD592668345B00602376 /* CategoryView.swift */; };
+		DC12FD61266940CD00602376 /* GoalsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD60266940CD00602376 /* GoalsRepository.swift */; };
+		DC12FD632669411700602376 /* Goal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD622669411700602376 /* Goal.swift */; };
+		DC12FD68266942E800602376 /* UserDefaultStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD67266942E800602376 /* UserDefaultStorage.swift */; };
+		DC12FD6C2669437100602376 /* JSONDecoderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD6B2669437100602376 /* JSONDecoderProtocol.swift */; };
+		DC12FD6E2669437900602376 /* JSONEncoderProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD6D2669437900602376 /* JSONEncoderProtocol.swift */; };
+		DC12FD702669438100602376 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD6F2669438100602376 /* UserDefaultsProtocol.swift */; };
+		DC12FD72266946F200602376 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD71266946F200602376 /* HttpClient.swift */; };
+		DC12FD74266947A900602376 /* URLSessionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD73266947A900602376 /* URLSessionFactory.swift */; };
+		DC67B86526695E9300BCA8BF /* GoalsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B86426695E9300BCA8BF /* GoalsService.swift */; };
+		DC67B868266962D700BCA8BF /* GoalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B867266962D700BCA8BF /* GoalResponse.swift */; };
+		DC67B86B2669645C00BCA8BF /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B86A2669645C00BCA8BF /* Reward.swift */; };
+		DC67B86F266965B400BCA8BF /* GoalsResponseMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B86E266965B400BCA8BF /* GoalsResponseMapper.swift */; };
+		DC67B872266968A500BCA8BF /* AwardsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B871266968A500BCA8BF /* AwardsUseCase.swift */; };
+		DC67B875266971B700BCA8BF /* ContentViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B874266971B700BCA8BF /* ContentViewState.swift */; };
+		DC67B87C2669735C00BCA8BF /* GoalsServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B87B2669735C00BCA8BF /* GoalsServiceTests.swift */; };
+		DC67B87E2669738B00BCA8BF /* HttpClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B87D2669738B00BCA8BF /* HttpClientMock.swift */; };
+		DC67B8802669799000BCA8BF /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B87F2669799000BCA8BF /* MockError.swift */; };
+		DC67B882266979FE00BCA8BF /* Subscribers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B881266979FE00BCA8BF /* Subscribers.swift */; };
+		DC67B88626697BA500BCA8BF /* GoalsResponseMapperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B88526697BA500BCA8BF /* GoalsResponseMapperTests.swift */; };
+		DC67B88926697C0700BCA8BF /* GoalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B88826697C0700BCA8BF /* GoalResponse.swift */; };
+		DC67B88B2669825500BCA8BF /* UserDefaultStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B88A2669825500BCA8BF /* UserDefaultStorageMock.swift */; };
+		DC67B88D2669827D00BCA8BF /* GoalsResponseMapperMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B88C2669827D00BCA8BF /* GoalsResponseMapperMock.swift */; };
+		DC67B88F266985BA00BCA8BF /* GoalsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B88E266985BA00BCA8BF /* GoalsRepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +81,29 @@
 		DC12FD53266830A400602376 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DC12FD572668330700602376 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		DC12FD592668345B00602376 /* CategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryView.swift; sourceTree = "<group>"; };
+		DC12FD60266940CD00602376 /* GoalsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsRepository.swift; sourceTree = "<group>"; };
+		DC12FD622669411700602376 /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
+		DC12FD67266942E800602376 /* UserDefaultStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorage.swift; sourceTree = "<group>"; };
+		DC12FD6B2669437100602376 /* JSONDecoderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONDecoderProtocol.swift; sourceTree = "<group>"; };
+		DC12FD6D2669437900602376 /* JSONEncoderProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONEncoderProtocol.swift; sourceTree = "<group>"; };
+		DC12FD6F2669438100602376 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
+		DC12FD71266946F200602376 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
+		DC12FD73266947A900602376 /* URLSessionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFactory.swift; sourceTree = "<group>"; };
+		DC67B86426695E9300BCA8BF /* GoalsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsService.swift; sourceTree = "<group>"; };
+		DC67B867266962D700BCA8BF /* GoalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalResponse.swift; sourceTree = "<group>"; };
+		DC67B86A2669645C00BCA8BF /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		DC67B86E266965B400BCA8BF /* GoalsResponseMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsResponseMapper.swift; sourceTree = "<group>"; };
+		DC67B871266968A500BCA8BF /* AwardsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsUseCase.swift; sourceTree = "<group>"; };
+		DC67B874266971B700BCA8BF /* ContentViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewState.swift; sourceTree = "<group>"; };
+		DC67B87B2669735C00BCA8BF /* GoalsServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsServiceTests.swift; sourceTree = "<group>"; };
+		DC67B87D2669738B00BCA8BF /* HttpClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClientMock.swift; sourceTree = "<group>"; };
+		DC67B87F2669799000BCA8BF /* MockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockError.swift; sourceTree = "<group>"; };
+		DC67B881266979FE00BCA8BF /* Subscribers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subscribers.swift; sourceTree = "<group>"; };
+		DC67B88526697BA500BCA8BF /* GoalsResponseMapperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsResponseMapperTests.swift; sourceTree = "<group>"; };
+		DC67B88826697C0700BCA8BF /* GoalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalResponse.swift; sourceTree = "<group>"; };
+		DC67B88A2669825500BCA8BF /* UserDefaultStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorageMock.swift; sourceTree = "<group>"; };
+		DC67B88C2669827D00BCA8BF /* GoalsResponseMapperMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsResponseMapperMock.swift; sourceTree = "<group>"; };
+		DC67B88E266985BA00BCA8BF /* GoalsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsRepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,11 +173,11 @@
 			isa = PBXGroup;
 			children = (
 				DC12FD062667F9C500602376 /* Info.plist */,
-				DC12FCFF2667F9C300602376 /* ContentView.swift */,
 				DC12FD2C2668024100602376 /* Application */,
+				DC12FD64266941E100602376 /* Data */,
 				DC12FD512668307800602376 /* Domain */,
-				DC12FD552668326800602376 /* Extensions */,
 				DC12FD4B2668249800602376 /* Modules */,
+				DC12FD692669434D00602376 /* Utils */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -168,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				DC12FD3B2668131D00602376 /* Application */,
+				DC67B876266972FB00BCA8BF /* Data */,
 				DC12FD4426681ECB00602376 /* TestUtils */,
 			);
 			path = Tests;
@@ -194,6 +241,8 @@
 			isa = PBXGroup;
 			children = (
 				DC12FD482668226E00602376 /* DependencyInjection */,
+				DC67B88326697A0800BCA8BF /* Extensions */,
+				DC67B88726697BF400BCA8BF /* Fakes */,
 				DC12FD4526681EF700602376 /* Mocks */,
 			);
 			path = TestUtils;
@@ -203,6 +252,10 @@
 			isa = PBXGroup;
 			children = (
 				DC12FD4626681F0C00602376 /* DependencyContainerMock.swift */,
+				DC67B88C2669827D00BCA8BF /* GoalsResponseMapperMock.swift */,
+				DC67B87D2669738B00BCA8BF /* HttpClientMock.swift */,
+				DC67B87F2669799000BCA8BF /* MockError.swift */,
+				DC67B88A2669825500BCA8BF /* UserDefaultStorageMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -218,6 +271,7 @@
 		DC12FD4B2668249800602376 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DC67B8732669718D00BCA8BF /* Content */,
 				DC12FD4C266824A100602376 /* Summary */,
 			);
 			path = Modules;
@@ -236,7 +290,6 @@
 		DC12FD512668307800602376 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				DC12FD522668308000602376 /* Models */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -244,7 +297,8 @@
 		DC12FD522668308000602376 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DC12FD53266830A400602376 /* Category.swift */,
+				DC67B86C2669659400BCA8BF /* Domain */,
+				DC67B8692669639800BCA8BF /* Responses */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -255,6 +309,165 @@
 				DC12FD572668330700602376 /* View.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DC12FD5F266940AE00602376 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD60266940CD00602376 /* GoalsRepository.swift */,
+				DC67B86D2669659D00BCA8BF /* Mappers */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		DC12FD64266941E100602376 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD522668308000602376 /* Models */,
+				DC12FD662669422800602376 /* Network */,
+				DC12FD5F266940AE00602376 /* Repositories */,
+				DC12FD652669422100602376 /* Storage */,
+				DC67B8702669689000BCA8BF /* UseCases */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		DC12FD652669422100602376 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD67266942E800602376 /* UserDefaultStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		DC12FD662669422800602376 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DC67B86426695E9300BCA8BF /* GoalsService.swift */,
+				DC12FD71266946F200602376 /* HttpClient.swift */,
+				DC12FD73266947A900602376 /* URLSessionFactory.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DC12FD692669434D00602376 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD6A2669435B00602376 /* Protocols */,
+				DC12FD552668326800602376 /* Extensions */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		DC12FD6A2669435B00602376 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD6B2669437100602376 /* JSONDecoderProtocol.swift */,
+				DC12FD6D2669437900602376 /* JSONEncoderProtocol.swift */,
+				DC12FD6F2669438100602376 /* UserDefaultsProtocol.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DC67B8692669639800BCA8BF /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				DC67B867266962D700BCA8BF /* GoalResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		DC67B86C2669659400BCA8BF /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FD53266830A400602376 /* Category.swift */,
+				DC12FD622669411700602376 /* Goal.swift */,
+				DC67B86A2669645C00BCA8BF /* Reward.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		DC67B86D2669659D00BCA8BF /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				DC67B86E266965B400BCA8BF /* GoalsResponseMapper.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
+		DC67B8702669689000BCA8BF /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				DC67B871266968A500BCA8BF /* AwardsUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		DC67B8732669718D00BCA8BF /* Content */ = {
+			isa = PBXGroup;
+			children = (
+				DC12FCFF2667F9C300602376 /* ContentView.swift */,
+				DC67B874266971B700BCA8BF /* ContentViewState.swift */,
+			);
+			path = Content;
+			sourceTree = "<group>";
+		};
+		DC67B876266972FB00BCA8BF /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				DC67B8772669730600BCA8BF /* Network */,
+				DC67B8782669730C00BCA8BF /* Repositories */,
+				DC67B87A2669731800BCA8BF /* UseCases */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		DC67B8772669730600BCA8BF /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				DC67B87B2669735C00BCA8BF /* GoalsServiceTests.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		DC67B8782669730C00BCA8BF /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				DC67B88426697B9200BCA8BF /* Mappers */,
+				DC67B88E266985BA00BCA8BF /* GoalsRepositoryTests.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		DC67B87A2669731800BCA8BF /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		DC67B88326697A0800BCA8BF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DC67B881266979FE00BCA8BF /* Subscribers.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DC67B88426697B9200BCA8BF /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				DC67B88526697BA500BCA8BF /* GoalsResponseMapperTests.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
+		DC67B88726697BF400BCA8BF /* Fakes */ = {
+			isa = PBXGroup;
+			children = (
+				DC67B88826697C0700BCA8BF /* GoalResponse.swift */,
+			);
+			path = Fakes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,16 +597,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC12FD6E2669437900602376 /* JSONEncoderProtocol.swift in Sources */,
 				DC12FD392668108700602376 /* AppDelegate.swift in Sources */,
+				DC67B86F266965B400BCA8BF /* GoalsResponseMapper.swift in Sources */,
+				DC67B875266971B700BCA8BF /* ContentViewState.swift in Sources */,
 				DC12FD4E2668250200602376 /* SummaryView.swift in Sources */,
+				DC12FD61266940CD00602376 /* GoalsRepository.swift in Sources */,
+				DC67B86B2669645C00BCA8BF /* Reward.swift in Sources */,
+				DC12FD72266946F200602376 /* HttpClient.swift in Sources */,
 				DC12FD582668330700602376 /* View.swift in Sources */,
+				DC12FD702669438100602376 /* UserDefaultsProtocol.swift in Sources */,
+				DC67B872266968A500BCA8BF /* AwardsUseCase.swift in Sources */,
 				DC12FD002667F9C300602376 /* ContentView.swift in Sources */,
+				DC67B86526695E9300BCA8BF /* GoalsService.swift in Sources */,
+				DC12FD632669411700602376 /* Goal.swift in Sources */,
 				DC12FD502668285C00602376 /* SummaryViewState.swift in Sources */,
+				DC12FD74266947A900602376 /* URLSessionFactory.swift in Sources */,
+				DC67B868266962D700BCA8BF /* GoalResponse.swift in Sources */,
 				DC12FD5A2668345B00602376 /* CategoryView.swift in Sources */,
 				DC12FD35266807B600602376 /* DependencyContainer.swift in Sources */,
+				DC12FD6C2669437100602376 /* JSONDecoderProtocol.swift in Sources */,
 				DC12FD54266830A400602376 /* Category.swift in Sources */,
 				DC12FCFE2667F9C300602376 /* YourFitnessLevelApp.swift in Sources */,
 				DC12FD332668074400602376 /* Injected.swift in Sources */,
+				DC12FD68266942E800602376 /* UserDefaultStorage.swift in Sources */,
 				DC12FD3726680FDA00602376 /* Dependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,10 +629,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC67B8802669799000BCA8BF /* MockError.swift in Sources */,
+				DC67B88626697BA500BCA8BF /* GoalsResponseMapperTests.swift in Sources */,
+				DC67B87E2669738B00BCA8BF /* HttpClientMock.swift in Sources */,
 				DC12FD3F266813FE00602376 /* AppContainerTests.swift in Sources */,
+				DC67B882266979FE00BCA8BF /* Subscribers.swift in Sources */,
+				DC67B88926697C0700BCA8BF /* GoalResponse.swift in Sources */,
 				DC12FD4726681F0C00602376 /* DependencyContainerMock.swift in Sources */,
+				DC67B88F266985BA00BCA8BF /* GoalsRepositoryTests.swift in Sources */,
 				DC12FD4A2668228600602376 /* TestDependencyContainer.swift in Sources */,
+				DC67B88D2669827D00BCA8BF /* GoalsResponseMapperMock.swift in Sources */,
+				DC67B87C2669735C00BCA8BF /* GoalsServiceTests.swift in Sources */,
 				DC12FD4326681E9800602376 /* InjectedTests.swift in Sources */,
+				DC67B88B2669825500BCA8BF /* UserDefaultStorageMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

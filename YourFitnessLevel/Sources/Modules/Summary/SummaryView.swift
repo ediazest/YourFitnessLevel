@@ -14,6 +14,7 @@ struct SummaryView: View {
     var body: some View {
         content
             .padding(.horizontal, 20)
+            .padding(.top)
             .onAppear(perform: state.handleViewAppear)
     }
 

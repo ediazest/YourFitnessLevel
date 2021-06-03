@@ -10,8 +10,17 @@ import Foundation
 
 class SummaryViewState: ObservableObject {
     @Published var viewData: SummaryViewData = .init(date: "Wed 2, June", contentType: .empty)
+    @Injected private var awardsUseCase: AwardsUseCaseProtocol
 
-    func handleViewAppear() {}
+    private var subscriptions: [AnyCancellable] = []
+
+    func handleViewAppear() {
+        awardsUseCase.awards
+            .sink {
+                print($0)
+            }
+            .store(in: &subscriptions)
+    }
 
     func handleRequestAccessToData() {
         viewData = .init(
