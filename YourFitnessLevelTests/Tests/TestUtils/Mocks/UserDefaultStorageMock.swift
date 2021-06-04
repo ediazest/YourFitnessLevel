@@ -17,7 +17,7 @@ class UserDefaultStorageMock: UserDefaultStorageProtocol {
     var calls: [Call] = []
 
     var returnedValue: Any?
-    func get<T: Decodable>(key: String) throws -> T? {
+    func get<T>(key: String) throws -> T? {
         calls.append(.get(key))
         return returnedValue as? T
     }

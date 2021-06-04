@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct GoalResponse: Decodable, Equatable {
+struct GoalResponse: Codable, Equatable {
     let items: [GoalDTO]
     let nextPageToken: String
 }
 
-struct GoalDTO: Decodable, Equatable {
+struct GoalDTO: Codable, Equatable {
     let identifier: String
     let title: String
     let description: String
@@ -30,7 +30,7 @@ struct GoalDTO: Decodable, Equatable {
     }
 }
 
-struct RewardDTO: Decodable, Equatable {
+struct RewardDTO: Codable, Equatable {
     let trophy: String
     let points: Int
 }

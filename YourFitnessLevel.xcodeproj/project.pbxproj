@@ -47,6 +47,8 @@
 		DC67B88B2669825500BCA8BF /* UserDefaultStorageMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B88A2669825500BCA8BF /* UserDefaultStorageMock.swift */; };
 		DC67B88D2669827D00BCA8BF /* GoalsResponseMapperMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B88C2669827D00BCA8BF /* GoalsResponseMapperMock.swift */; };
 		DC67B88F266985BA00BCA8BF /* GoalsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B88E266985BA00BCA8BF /* GoalsRepositoryTests.swift */; };
+		DC67B89226698C4300BCA8BF /* DeferredFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B89126698C4300BCA8BF /* DeferredFuture.swift */; };
+		DC9BBAF726699846007E7503 /* GoalsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BBAF626699846007E7503 /* GoalsUseCase.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +106,8 @@
 		DC67B88A2669825500BCA8BF /* UserDefaultStorageMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultStorageMock.swift; sourceTree = "<group>"; };
 		DC67B88C2669827D00BCA8BF /* GoalsResponseMapperMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsResponseMapperMock.swift; sourceTree = "<group>"; };
 		DC67B88E266985BA00BCA8BF /* GoalsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsRepositoryTests.swift; sourceTree = "<group>"; };
+		DC67B89126698C4300BCA8BF /* DeferredFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeferredFuture.swift; sourceTree = "<group>"; };
+		DC9BBAF626699846007E7503 /* GoalsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsUseCase.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +357,7 @@
 		DC12FD692669434D00602376 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				DC67B89026698C3900BCA8BF /* Helpers */,
 				DC12FD6A2669435B00602376 /* Protocols */,
 				DC12FD552668326800602376 /* Extensions */,
 			);
@@ -399,6 +404,7 @@
 			isa = PBXGroup;
 			children = (
 				DC67B871266968A500BCA8BF /* AwardsUseCase.swift */,
+				DC9BBAF626699846007E7503 /* GoalsUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -468,6 +474,14 @@
 				DC67B88826697C0700BCA8BF /* GoalResponse.swift */,
 			);
 			path = Fakes;
+			sourceTree = "<group>";
+		};
+		DC67B89026698C3900BCA8BF /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				DC67B89126698C4300BCA8BF /* DeferredFuture.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -605,6 +619,7 @@
 				DC12FD61266940CD00602376 /* GoalsRepository.swift in Sources */,
 				DC67B86B2669645C00BCA8BF /* Reward.swift in Sources */,
 				DC12FD72266946F200602376 /* HttpClient.swift in Sources */,
+				DC9BBAF726699846007E7503 /* GoalsUseCase.swift in Sources */,
 				DC12FD582668330700602376 /* View.swift in Sources */,
 				DC12FD702669438100602376 /* UserDefaultsProtocol.swift in Sources */,
 				DC67B872266968A500BCA8BF /* AwardsUseCase.swift in Sources */,
@@ -616,6 +631,7 @@
 				DC67B868266962D700BCA8BF /* GoalResponse.swift in Sources */,
 				DC12FD5A2668345B00602376 /* CategoryView.swift in Sources */,
 				DC12FD35266807B600602376 /* DependencyContainer.swift in Sources */,
+				DC67B89226698C4300BCA8BF /* DeferredFuture.swift in Sources */,
 				DC12FD6C2669437100602376 /* JSONDecoderProtocol.swift in Sources */,
 				DC12FD54266830A400602376 /* Category.swift in Sources */,
 				DC12FCFE2667F9C300602376 /* YourFitnessLevelApp.swift in Sources */,

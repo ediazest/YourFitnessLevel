@@ -40,4 +40,3 @@ class GoalsResponseMapperTests: XCTestCase {
         }
     }
 }
-

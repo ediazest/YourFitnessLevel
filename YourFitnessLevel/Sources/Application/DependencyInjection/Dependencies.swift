@@ -47,4 +47,8 @@ func injectDependencies(into container: DependencyContainer) {
     container.register(with: .singleton) { _ -> AwardsUseCaseProtocol in
         AwardsUseCase()
     }
+
+    container.register(with: .singleton) { _ -> GoalsUseCaseProtocol in
+        GoalsUseCase()
+    }
 }

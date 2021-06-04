@@ -10,27 +10,11 @@ import Foundation
 
 protocol AwardsUseCaseProtocol {
     var awards: AnyPublisher<[Goal], Never> { get }
-
-    func fetchAwards()
 }
 
 class AwardsUseCase: AwardsUseCaseProtocol {
-    @Injected private var goalsRepository: GoalsRepositoryProtocol
+    @Injected private var goalsUseCase: GoalsUseCaseProtocol
 
-    private let awardsSubject = CurrentValueSubject<[Goal], Never>([])
-    lazy var awards: AnyPublisher<[Goal], Never> = awardsSubject.eraseToAnyPublisher()
+    lazy var awards: AnyPublisher<[Goal], Never> = goalsUseCase.goals
 
-    private var subscriptions: [AnyCancellable] = []
-
-    func fetchAwards() {
-        goalsRepository.fetch()
-            .sink(
-                receiveCompletion: {
-                    print($0)
-                },
-                receiveValue: { [awardsSubject] in
-                    awardsSubject.value = $0
-                }
-            ).store(in: &subscriptions)
-    }
 }

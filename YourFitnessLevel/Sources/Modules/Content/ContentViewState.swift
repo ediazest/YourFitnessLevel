@@ -9,9 +9,9 @@ import Combine
 import Foundation
 
 class ContentViewState: ObservableObject {
-    @Injected private var awardsUseCase: AwardsUseCaseProtocol
+    @Injected private var goalsUseCase: GoalsUseCaseProtocol
 
     func handleOnAppear() {
-        awardsUseCase.fetchAwards()
+        goalsUseCase.fetchGoals()
     }
 }
