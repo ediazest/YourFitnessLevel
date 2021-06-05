@@ -29,7 +29,7 @@ struct CategoryView: View {
                 ChartView(samples: category.samples)
             }
         }
-        .padding(.top)
+        .padding(.vertical)
         .frame(alignment: .leading)
         .background(Color.white.opacity(0.3))
         .cornerRadius(8)
@@ -66,6 +66,7 @@ struct CategoryView: View {
             label: {
                 Text(displayChart ? "less" : "more")
                     .frame(maxWidth: .infinity, alignment: .trailing)
+                    .animation(nil)
             }
         )
     }

@@ -51,7 +51,7 @@ struct ChartView: View {
                     })
                     .frame(height: .maxBarHeight)
                     .frame(maxWidth: .infinity, alignment: .leading)
-
+                
                 Divider()
             }
 

@@ -30,6 +30,7 @@ struct SummaryView: View {
                     .foregroundColor(.white)
             })
         }
+        .animation(.default)
         .background(Color.black.edgesIgnoringSafeArea(.all))
         .onAppear(perform: state.handleViewAppear)
     }
