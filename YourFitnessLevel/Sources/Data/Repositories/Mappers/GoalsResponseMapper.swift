@@ -21,7 +21,7 @@ class GoalsResponseMapper: GoalsResponseMapperProtocol {
                 type: .init(rawValue: $0.type),
                 goal: $0.goal,
                 reward: .init(
-                    trophy: .init(rawValue: $0.reward.trophy),
+                    trophy: (.init(rawValue: $0.reward.trophy) ?? Trophy.bronze),
                     points: $0.reward.points
                 )
             )

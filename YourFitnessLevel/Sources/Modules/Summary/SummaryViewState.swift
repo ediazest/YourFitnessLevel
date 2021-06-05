@@ -125,10 +125,3 @@ struct SummaryViewData: Equatable {
         )
     }
 }
-
-private extension Array where Element == Step {
-    var sum: Int {
-        self.map { $0.count }
-            .reduce(0, +)
-    }
-}

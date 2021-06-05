@@ -8,7 +8,7 @@
 import Foundation
 
 struct Reward: Equatable {
-    let trophy: Trophy?
+    let trophy: Trophy
     let points: Int
 }
 

@@ -34,7 +34,7 @@
 		DC12FD74266947A900602376 /* URLSessionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD73266947A900602376 /* URLSessionFactory.swift */; };
 		DC1926C6266ACC7500873625 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926C5266ACC7500873625 /* AwardsView.swift */; };
 		DC1926C8266AD10600873625 /* AwardsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926C7266AD10600873625 /* AwardsViewState.swift */; };
-		DC1926CB266AD81600873625 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926CA266AD81600873625 /* UIImage.swift */; };
+		DC1926CB266AD81600873625 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926CA266AD81600873625 /* Image.swift */; };
 		DC1926CD266AD97900873625 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926CC266AD97900873625 /* Array.swift */; };
 		DC1926D0266AED2000873625 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926CF266AED2000873625 /* HelpView.swift */; };
 		DC1926D2266AF81F00873625 /* HelpViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926D1266AF81F00873625 /* HelpViewState.swift */; };
@@ -70,6 +70,7 @@
 		DCA67DED266BFA9F00308764 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DEC266BFA9F00308764 /* LottieView.swift */; };
 		DCA67DF0266BFB4500308764 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = DCA67DEF266BFB4500308764 /* loading.json */; };
 		DCCCF385266BFC1700954B4F /* noData.json in Resources */ = {isa = PBXBuildFile; fileRef = DCCCF384266BFC1700954B4F /* noData.json */; };
+		DCCCF387266C077200954B4F /* NumberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCCCF386266C077200954B4F /* NumberView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,7 +115,7 @@
 		DC12FD73266947A900602376 /* URLSessionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFactory.swift; sourceTree = "<group>"; };
 		DC1926C5266ACC7500873625 /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
 		DC1926C7266AD10600873625 /* AwardsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsViewState.swift; sourceTree = "<group>"; };
-		DC1926CA266AD81600873625 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		DC1926CA266AD81600873625 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		DC1926CC266AD97900873625 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		DC1926CF266AED2000873625 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
 		DC1926D1266AF81F00873625 /* HelpViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewState.swift; sourceTree = "<group>"; };
@@ -149,6 +150,7 @@
 		DCA67DEC266BFA9F00308764 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
 		DCA67DEF266BFB4500308764 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
 		DCCCF384266BFC1700954B4F /* noData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noData.json; sourceTree = "<group>"; };
+		DCCCF386266C077200954B4F /* NumberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -360,10 +362,10 @@
 		DC12FD552668326800602376 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				DC1926CA266AD81600873625 /* UIImage.swift */,
-				DC12FD572668330700602376 /* View.swift */,
 				DC1926CC266AD97900873625 /* Array.swift */,
 				DCA67DE4266BE76200308764 /* Color.swift */,
+				DC1926CA266AD81600873625 /* Image.swift */,
+				DC12FD572668330700602376 /* View.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -583,6 +585,7 @@
 			isa = PBXGroup;
 			children = (
 				DCA67DEC266BFA9F00308764 /* LottieView.swift */,
+				DCCCF386266C077200954B4F /* NumberView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -760,7 +763,8 @@
 				DCA67DD0266B81A200308764 /* HealthDataRepository.swift in Sources */,
 				DC12FD35266807B600602376 /* DependencyContainer.swift in Sources */,
 				DC1926C8266AD10600873625 /* AwardsViewState.swift in Sources */,
-				DC1926CB266AD81600873625 /* UIImage.swift in Sources */,
+				DCCCF387266C077200954B4F /* NumberView.swift in Sources */,
+				DC1926CB266AD81600873625 /* Image.swift in Sources */,
 				DCA67DDC266BAA6800308764 /* Activity.swift in Sources */,
 				DC1926C6266ACC7500873625 /* AwardsView.swift in Sources */,
 				DCA67DED266BFA9F00308764 /* LottieView.swift in Sources */,

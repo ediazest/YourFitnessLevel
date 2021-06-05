@@ -8,9 +8,9 @@
 import Combine
 import CombineSchedulers
 import Foundation
-import UIKit
 
 class AwardsViewState: ObservableObject {
+    @Injected private var activityUseCase: ActivityUseCaseProtocol
     @Injected private var goalsUseCase: GoalsUseCaseProtocol
 
     @Published var viewData: AwardsViewData = .init()
@@ -29,52 +29,71 @@ class AwardsViewState: ObservableObject {
     }
 
     private func configureSubscriptions() {
-        goalsUseCase.goals
-            .receive(on: scheduler)
-            .sink { [handleGoals] in
-                handleGoals($0)
-            }
-            .store(in: &subscriptions)
+        Publishers.CombineLatest(
+            activityUseCase.runningMonthSteps,
+            goalsUseCase.goals
+        )
+        .receive(on: scheduler)
+        .sink { [handleReceivedData] in
+            handleReceivedData($0, $1)
+        }
+        .store(in: &subscriptions)
     }
 
-    private func handleGoals(_ goals: [Goal]) {
+    private func handleReceivedData(activity: Activity?, goals: [Goal]) {
         let awards = goals
-            .compactMap { $0.reward.trophy }
-            .removingDuplicates()
-            .map { trophy -> AwardsViewData.Award in
-                switch trophy {
-                case .bronze:
-                    return AwardsViewData.Award(
-                        id: trophy.rawValue,
-                        image: .bronzeMedal,
-                        title: trophy.title,
-                        achieved: 0)
-                case .silver:
-                    return AwardsViewData.Award(
-                        id: trophy.rawValue,
-                        image: .silverMedal,
-                        title: trophy.title,
-                        achieved: 0)
-                case .gold:
-                    return AwardsViewData.Award(
-                        id: trophy.rawValue,
-                        image: .goldMedal,
-                        title: trophy.title,
-                        achieved: 0)
-                case .zombie:
-                    return AwardsViewData.Award(
-                        id: trophy.rawValue,
-                        image: .zombieHand,
-                        title: trophy.title,
-                        achieved: 0)
-                }
+            .map { goal -> AwardsViewData.Award in
+                .init(
+                    id: UUID().uuidString,
+                    image: goal.reward.trophy.image,
+                    title: goal.title,
+                    detail: goal.reward.trophy.title,
+                    achieved: calculateUserTrophies(goal: goal, activities: [activity]))
             }
 
+        let points = goals
+            .map { calculateUserPoints(goal: $0, activities: [activity]) }
+            .reduce(0, +)
+
         viewData = .init(
-            points: 0,
+            points: points,
             shouldDisplayHelpButton: !awards.isEmpty,
             awards: awards
         )
+    }
+
+    private func calculateUserPoints(goal: Goal, activities: [Activity?]) -> Int {
+        if goal.type == .step {
+            let steps = activities
+                .compactMap { $0 }
+                .filter { $0.isSteps }
+                .flatMap { activity -> [Step] in
+                    if case let .steps(steps) = activity { return steps }
+                    return []
+                }
+            guard !steps.isEmpty else { return 0 }
+
+            return steps.sum > goal.goal ? goal.reward.points : 0
+        } else {
+            return 0
+        }
+    }
+
+    private func calculateUserTrophies(goal: Goal, activities: [Activity?]) -> Int {
+        if goal.type == .step {
+            let steps = activities
+                .compactMap { $0 }
+                .filter { $0.isSteps }
+                .flatMap { activity -> [Step] in
+                    if case let .steps(steps) = activity { return steps }
+                    return []
+                }
+            guard !steps.isEmpty else { return 0 }
+
+            return steps.sum > goal.goal ? 1 : 0
+        } else {
+            return 0
+        }
     }
 }
 
@@ -95,8 +114,9 @@ struct AwardsViewData: Equatable {
 
     struct Award: Equatable {
         let id: String
-        let image: UIImage
+        let image: String
         let title: String
+        let detail: String
         let achieved: Int
     }
 }

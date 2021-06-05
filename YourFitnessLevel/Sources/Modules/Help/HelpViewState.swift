@@ -46,7 +46,7 @@ class HelpViewState: ObservableObject {
                     title: $0.title,
                     description: $0.description,
                     points: $0.reward.points,
-                    image: $0.reward.trophy?.image ?? ""
+                    image: $0.reward.trophy.image
                 )
             }
         )

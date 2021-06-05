@@ -22,11 +22,13 @@ struct HelpView: View {
         NavigationView {
             ZStack {
                 Color.black.opacity(0.8).edgesIgnoringSafeArea(.all)
-                VStack(alignment: .leading, spacing: 20) {
-                    header
-                    goals
+                ScrollView {
+                    LazyVStack(alignment: .leading, spacing: 20) {
+                        header
+                        goals
+                    }
+                    .padding()
                 }
-                .padding()
             }
             .navigationTitle("This is how we do it")
             .toolbar(content: {
@@ -62,10 +64,8 @@ struct HelpView: View {
     }
 
     private var goals: some View {
-        ScrollView {
-            ForEach(state.viewData.goals) {
-                GoalView(goal: $0)
-            }
+        ForEach(state.viewData.goals) {
+            GoalView(goal: $0)
         }
     }
 }

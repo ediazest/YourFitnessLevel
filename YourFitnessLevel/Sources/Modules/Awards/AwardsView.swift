@@ -18,6 +18,7 @@ struct AwardsView: View {
                 medals
             }
         }
+        .animation(.default)
         .padding()
         .background(Color.black.edgesIgnoringSafeArea(.all), alignment: .center)
         .sheet(isPresented: $state.presentHelp) {
@@ -38,17 +39,20 @@ struct AwardsView: View {
                     Button(action: state.handleHelpButtonTap) {
                         Image.question
                             .foregroundColor(.white)
+                            .padding()
                     }
                 }
             }
+            .animation(nil)
 
-            Text("2000")
+            Text("\(state.viewData.points)")
+                .modifier(NumberView(number: state.viewData.points))
+                .frame(maxWidth: .infinity, alignment: .center)
                 .font(.system(size: 50, weight: .light, design: .default))
                 .foregroundColor(.white)
-                .frame(maxWidth: .infinity, alignment: .center)
 
             Text("We know you have been working hard lately, here you can see "
-                    + "your achievements within the current month")
+                    + "your achievements in the running month")
                 .font(.system(.body))
                 .foregroundColor(.white)
                 .fixedSize(horizontal: false, vertical: true)
@@ -60,6 +64,7 @@ struct AwardsView: View {
             Text("Your achivements")
                 .font(.system(.title2))
                 .foregroundColor(.white)
+                .animation(nil)
 
             LazyVGrid(columns: columns) {
                 ForEach(state.viewData.awards, id: \.id) {
@@ -78,12 +83,20 @@ struct AwardsView: View {
 
 private struct MedalView: View {
     let award: AwardsViewData.Award
+    @State private var scale: CGFloat = 1
 
     var body: some View {
         VStack {
-            Image(uiImage: award.image)
+            Image(award.image)
+                .scaleEffect(scale)
+
             Text("\(award.title)")
+                .bold()
                 .foregroundColor(.white)
+
+            Text("\(award.detail)")
+                .foregroundColor(.white)
+
             Text("\(award.achieved)")
                 .padding(5)
                 .background(Color.gray)
@@ -91,11 +104,25 @@ private struct MedalView: View {
                 .font(.caption)
                 .foregroundColor(.black)
         }
+        .frame(maxWidth: .infinity, maxHeight: 200)
+        .onTapGesture(perform: onTapGesture)
         .padding(.horizontal)
         .padding()
         .background(Color.white.opacity(0.3))
         .shadow(radius: 20)
         .cornerRadius(8)
+    }
+
+    private func onTapGesture() {
+        withAnimation(Animation.easeOut(duration: 0.25)) {
+            scale += scale * 0.20
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            withAnimation(Animation.easeIn(duration: 0.2)) {
+                scale = 1
+            }
+        }
     }
 }
 
@@ -109,12 +136,20 @@ struct AwardsView_Previews: PreviewProvider {
             super.init()
 
             viewData = .init(
-                points: 100,
+                points: 0,
                 shouldDisplayHelpButton: true,
                 awards:
                     [
-                        .init(id: "some", image: .bronzeMedal, title: "Some award", achieved: 2),
-                        .init(id: "other", image: .zombieHand, title: "Other award", achieved: 10)
+                        .init(id: "some",
+                              image: "bronzeMedal",
+                              title: "Some award",
+                              detail: "hard walk",
+                              achieved: 2),
+                        .init(id: "other",
+                              image: "zombieHand",
+                              title: "Other award",
+                              detail: "hard walk",
+                              achieved: 10)
                     ]
             )
         }

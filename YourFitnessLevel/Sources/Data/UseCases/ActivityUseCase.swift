@@ -11,6 +11,8 @@ import Foundation
 protocol ActivityUseCaseProtocol {
     var activities: AnyPublisher<[Activity], Never> { get }
     func fetch()
+
+    var runningMonthSteps: AnyPublisher<Activity?, Never> { get }
 }
 
 class ActivityUseCase: ActivityUseCaseProtocol {
@@ -20,10 +22,15 @@ class ActivityUseCase: ActivityUseCaseProtocol {
     private let activitiesSubject = CurrentValueSubject<[Activity], Never>([])
     lazy var activities: AnyPublisher<[Activity], Never> = activitiesSubject.eraseToAnyPublisher()
 
+    private let runningMonthStepsSubject = CurrentValueSubject<Activity?, Never>(nil)
+    lazy var runningMonthSteps: AnyPublisher<Activity?, Never> = runningMonthStepsSubject
+        .eraseToAnyPublisher()
+
     private var subscriptions: [AnyCancellable] = []
 
     func fetch() {
         fetchTodaysSteps()
+        fetchMonthSteps()
     }
 
     private func fetchTodaysSteps() {
@@ -35,6 +42,23 @@ class ActivityUseCase: ActivityUseCaseProtocol {
         )
         .handleEvents(receiveOutput: {[update] in
             update($0)
+        })
+        .map { _ in Void() }
+        .sink(receiveCompletion: {
+            print($0)
+        }, receiveValue: {})
+        .store(in: &subscriptions)
+    }
+
+    private func fetchMonthSteps() {
+        healthDataRepository.fetchActivityData(
+            startDate: calendar.startOfDay(for: calendar.currentDate),
+            endDate: calendar.currentDate,
+            intervalInMinutes: .twicePerHour,
+            type: .steps
+        )
+        .handleEvents(receiveOutput: {[runningMonthStepsSubject] in
+            runningMonthStepsSubject.send($0)
         })
         .map { _ in Void() }
         .sink(receiveCompletion: {
