@@ -35,7 +35,7 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
         endDate: Date,
         intervalInMinutes: Int,
         type: ActivityTypeRequest
-    )  -> AnyPublisher<Activity, Error> {
+    ) -> AnyPublisher<Activity, Error> {
         requestHealthKitPermission()
             .flatMap { [readSteps] result -> AnyPublisher<Activity, Error> in
                 guard result else {

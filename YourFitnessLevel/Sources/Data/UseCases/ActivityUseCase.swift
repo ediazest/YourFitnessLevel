@@ -21,7 +21,7 @@ class ActivityUseCase: ActivityUseCaseProtocol {
     lazy var activities: AnyPublisher<[Activity], Never> = activitiesSubject.eraseToAnyPublisher()
 
     private var subscriptions: [AnyCancellable] = []
-    
+
     func fetch() {
         fetchTodaysSteps()
     }
@@ -51,4 +51,3 @@ class ActivityUseCase: ActivityUseCaseProtocol {
 private extension Int {
     static let twicePerHour: Self = 30
 }
-

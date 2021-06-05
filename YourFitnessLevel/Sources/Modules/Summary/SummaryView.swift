@@ -11,12 +11,27 @@ import SwiftUI
 struct SummaryView: View {
     @StateObject var state = SummaryViewState()
 
+    init(state: SummaryViewState = SummaryViewState()) {
+        _state = StateObject(wrappedValue: state)
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    }
+
     var body: some View {
-        content
-            .padding(.horizontal, 20)
-            .padding(.top)
-            .background(Color.black.edgesIgnoringSafeArea(.all))
-            .onAppear(perform: state.handleViewAppear)
+        NavigationView {
+            ZStack {
+                Color.black.opacity(0.8).edgesIgnoringSafeArea(.all)
+                content
+                    .padding(.horizontal, 20)
+                    .padding(.top)
+            }
+            .navigationTitle("Your activity")
+            .toolbar(content: {
+                Text(state.viewData.date)
+                    .foregroundColor(.white)
+            })
+        }
+        .background(Color.black.edgesIgnoringSafeArea(.all))
+        .onAppear(perform: state.handleViewAppear)
     }
 
     @ViewBuilder
@@ -29,14 +44,24 @@ struct SummaryView: View {
     }
 
     private var empty: some View {
-        VStack {
-            header
-            Spacer()
-            Text("We need access to health date to show your progress")
-                .foregroundColor(.white)
-            Button(action: state.handleRequestAccessToData) {
-                Text("gooo")
-                    .foregroundColor(.white)
+        VStack(spacing: 30) {
+            LottieView(name: state.viewData.requestedBefore ? "loading" : "noData")
+                .frame(width: 200, height: 200)
+
+            Text(
+                state.viewData.requestedBefore ?
+                    "There is no data available at the moment":
+                    "We need access to your health data to show your progress"
+            )
+            .foregroundColor(.white)
+            .font(.title3)
+
+            if !state.viewData.requestedBefore {
+                Button(action: state.handleRequestAccessToData) {
+                    Text("Let's start")
+                        .foregroundColor(.white)
+                        .font(.body)
+                }
             }
             Spacer()
         }
@@ -44,12 +69,7 @@ struct SummaryView: View {
 
     private var list: some View {
         ScrollView {
-            LazyVStack(alignment: .leading) {
-                header
-                Text("5 min ago")
-                    .foregroundColor(.white)
-                categories
-            }
+            categories
         }
     }
 
@@ -59,29 +79,42 @@ struct SummaryView: View {
         }
 
         return ForEach(categories, id: \.title) { category in
-            VStack {
+            LazyVStack(alignment: .leading) {
                 CategoryView(category: category)
             }
         }.asAnyView
     }
-
-    private var header: some View {
-        HStack {
-            Text("Summary")
-                .foregroundColor(.white)
-            Spacer()
-            Text(state.viewData.date)
-                .foregroundColor(.white)
-        }.frame(maxWidth: .infinity, alignment: .leading)
-    }
 }
-
 struct SummaryView_Previews: PreviewProvider {
 
     static let categories: [Category] = [
-        .init(achievedDailyGoals: false, currentProgress: 50, message: "You still need 1000 steps for  next award", nextGoal: 100, unit: "step", title: "Steps", samples: []),
-        .init(achievedDailyGoals: true, currentProgress: 50, message: "You still need 1000 steps for  next award", nextGoal: 5000, unit: "km", title: "Walking distance", samples: []),
-        .init(achievedDailyGoals: false, currentProgress: 0, message: "You still need 1000 steps for  next award", nextGoal: 100, unit: "km", title: "Running distance", samples: [])
+        .init(
+            achievedDailyGoals: false,
+            currentProgress: 50,
+            message: "You still need 1000 steps for  next award",
+            nextGoal: 100,
+            unit: "step",
+            title: "Steps",
+            samples: []
+        ),
+        .init(
+            achievedDailyGoals: true,
+            currentProgress: 50,
+            message: "You still need 1000 steps for  next award",
+            nextGoal: 5000,
+            unit: "km",
+            title: "Walking distance",
+            samples: []
+        ),
+        .init(
+            achievedDailyGoals: false,
+            currentProgress: 0,
+            message: "You still need 1000 steps for  next award",
+            nextGoal: 100,
+            unit: "km",
+            title: "Running distance",
+            samples: []
+        )
     ]
 
     static var previews: some View {
@@ -97,10 +130,15 @@ struct SummaryView_Previews: PreviewProvider {
     class SummaryViewStatePreview: SummaryViewState {
         init(
             date: String = "Wed, 2 June",
-            contentType: SummaryViewData.ContentType = .empty
+            contentType: SummaryViewData.ContentType = .empty,
+            requestedBefore: Bool = false
         ) {
             super.init()
-            viewData = .init(date: date, contentType: contentType)
+            viewData = .init(
+                date: date,
+                contentType: contentType,
+                requestedBefore: requestedBefore
+            )
         }
     }
 }

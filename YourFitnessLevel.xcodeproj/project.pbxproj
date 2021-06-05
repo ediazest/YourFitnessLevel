@@ -65,6 +65,11 @@
 		DCA67DDE266BC1C500308764 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DDD266BC1C500308764 /* ChartView.swift */; };
 		DCA67DE2266BD5E200308764 /* ChartViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DE1266BD5E200308764 /* ChartViewState.swift */; };
 		DCA67DE5266BE76200308764 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DE4266BE76200308764 /* Color.swift */; };
+		DCA67DE7266BEF6F00308764 /* DateFormatterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DE6266BEF6F00308764 /* DateFormatterProtocol.swift */; };
+		DCA67DEA266BFA8200308764 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = DCA67DE9266BFA8200308764 /* Lottie */; };
+		DCA67DED266BFA9F00308764 /* LottieView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DEC266BFA9F00308764 /* LottieView.swift */; };
+		DCA67DF0266BFB4500308764 /* loading.json in Resources */ = {isa = PBXBuildFile; fileRef = DCA67DEF266BFB4500308764 /* loading.json */; };
+		DCCCF385266BFC1700954B4F /* noData.json in Resources */ = {isa = PBXBuildFile; fileRef = DCCCF384266BFC1700954B4F /* noData.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,6 +145,10 @@
 		DCA67DDD266BC1C500308764 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		DCA67DE1266BD5E200308764 /* ChartViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewState.swift; sourceTree = "<group>"; };
 		DCA67DE4266BE76200308764 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		DCA67DE6266BEF6F00308764 /* DateFormatterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterProtocol.swift; sourceTree = "<group>"; };
+		DCA67DEC266BFA9F00308764 /* LottieView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieView.swift; sourceTree = "<group>"; };
+		DCA67DEF266BFB4500308764 /* loading.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading.json; sourceTree = "<group>"; };
+		DCCCF384266BFC1700954B4F /* noData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = noData.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +158,7 @@
 			files = (
 				DC1926D7266B024C00873625 /* CombineSchedulers in Frameworks */,
 				DCA67DD6266B89F000308764 /* HealthKit.framework in Frameworks */,
+				DCA67DEA266BFA8200308764 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -226,6 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				DC12FD012667F9C500602376 /* Assets.xcassets */,
+				DCA67DEE266BFB2600308764 /* Animations */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -400,6 +411,7 @@
 		DC12FD692669434D00602376 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				DCA67DEB266BFA9300308764 /* CustomViews */,
 				DC67B89026698C3900BCA8BF /* Helpers */,
 				DC12FD6A2669435B00602376 /* Protocols */,
 				DC12FD552668326800602376 /* Extensions */,
@@ -410,11 +422,12 @@
 		DC12FD6A2669435B00602376 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				DCA67DD9266B934C00308764 /* CalendarProtocol.swift */,
+				DCA67DE6266BEF6F00308764 /* DateFormatterProtocol.swift */,
 				DCA67DD1266B821000308764 /* HealthStoreProtocol.swift */,
 				DC12FD6B2669437100602376 /* JSONDecoderProtocol.swift */,
 				DC12FD6D2669437900602376 /* JSONEncoderProtocol.swift */,
 				DC12FD6F2669438100602376 /* UserDefaultsProtocol.swift */,
-				DCA67DD9266B934C00308764 /* CalendarProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -566,6 +579,23 @@
 			path = ChartView;
 			sourceTree = "<group>";
 		};
+		DCA67DEB266BFA9300308764 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				DCA67DEC266BFA9F00308764 /* LottieView.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		DCA67DEE266BFB2600308764 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				DCCCF384266BFC1700954B4F /* noData.json */,
+				DCA67DEF266BFB4500308764 /* loading.json */,
+			);
+			path = Animations;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -585,6 +615,7 @@
 			name = YourFitnessLevel;
 			packageProductDependencies = (
 				DC1926D6266B024C00873625 /* CombineSchedulers */,
+				DCA67DE9266BFA8200308764 /* Lottie */,
 			);
 			productName = YourFitnessLevel;
 			productReference = DC12FCFA2667F9C300602376 /* YourFitnessLevel.app */;
@@ -639,6 +670,7 @@
 			packageReferences = (
 				DC12FD2E2668046000602376 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				DC1926D5266B024C00873625 /* XCRemoteSwiftPackageReference "combine-schedulers" */,
+				DCA67DE8266BFA8200308764 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = DC12FCFB2667F9C300602376 /* Products */;
 			projectDirPath = "";
@@ -657,6 +689,8 @@
 			files = (
 				DC12FD052667F9C500602376 /* Preview Assets.xcassets in Resources */,
 				DC12FD022667F9C500602376 /* Assets.xcassets in Resources */,
+				DCCCF385266BFC1700954B4F /* noData.json in Resources */,
+				DCA67DF0266BFB4500308764 /* loading.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -705,6 +739,7 @@
 				DC12FD72266946F200602376 /* HttpClient.swift in Sources */,
 				DC9BBAF726699846007E7503 /* GoalsUseCase.swift in Sources */,
 				DC12FD582668330700602376 /* View.swift in Sources */,
+				DCA67DE7266BEF6F00308764 /* DateFormatterProtocol.swift in Sources */,
 				DCA67DD2266B821000308764 /* HealthStoreProtocol.swift in Sources */,
 				DC12FD702669438100602376 /* UserDefaultsProtocol.swift in Sources */,
 				DC67B872266968A500BCA8BF /* AwardsUseCase.swift in Sources */,
@@ -728,6 +763,7 @@
 				DC1926CB266AD81600873625 /* UIImage.swift in Sources */,
 				DCA67DDC266BAA6800308764 /* Activity.swift in Sources */,
 				DC1926C6266ACC7500873625 /* AwardsView.swift in Sources */,
+				DCA67DED266BFA9F00308764 /* LottieView.swift in Sources */,
 				DC67B89226698C4300BCA8BF /* DeferredFuture.swift in Sources */,
 				DC12FD6C2669437100602376 /* JSONDecoderProtocol.swift in Sources */,
 				DC12FD54266830A400602376 /* Category.swift in Sources */,
@@ -1031,6 +1067,14 @@
 				minimumVersion = 0.5.0;
 			};
 		};
+		DCA67DE8266BFA8200308764 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1038,6 +1082,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC1926D5266B024C00873625 /* XCRemoteSwiftPackageReference "combine-schedulers" */;
 			productName = CombineSchedulers;
+		};
+		DCA67DE9266BFA8200308764 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCA67DE8266BFA8200308764 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

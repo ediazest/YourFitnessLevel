@@ -21,6 +21,10 @@ func injectDependencies(into container: DependencyContainer) {
         Calendar.current
     }
 
+    container.register(with: .factory) { _ -> DateFormatterProtocol in
+        DateFormatter()
+    }
+
     container.register(with: .factory) { _ -> UserDefaultStorageProtocol in
         UserDefaultStorage()
     }

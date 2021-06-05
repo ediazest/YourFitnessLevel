@@ -10,9 +10,15 @@ import CombineSchedulers
 import Foundation
 
 class SummaryViewState: ObservableObject {
-    @Published var viewData: SummaryViewData = .init(date: "Wed 2, June", contentType: .empty)
+    @Published var viewData: SummaryViewData = .init(
+        date: "",
+        contentType: .empty,
+        requestedBefore: false
+        )
 
     @Injected private var activityUseCase: ActivityUseCaseProtocol
+    @Injected private var calendar: CalendarProtocol
+    @Injected private var dateFormatter: DateFormatterProtocol
     @Injected private var goalsUseCase: GoalsUseCaseProtocol
 
     private let scheduler: AnySchedulerOf<DispatchQueue>
@@ -20,6 +26,11 @@ class SummaryViewState: ObservableObject {
 
     init(scheduler: AnySchedulerOf<DispatchQueue> = .main) {
         self.scheduler = scheduler
+        dateFormatter.dateFormat = "E, d MMM"
+        viewData = viewData.updated(
+            date: dateFormatter.string(from: calendar.currentDate),
+            requestedBefore: false
+        )
     }
 
     func handleViewAppear() {
@@ -39,15 +50,21 @@ class SummaryViewState: ObservableObject {
     }
 
     private func handleActivityData(activities: [Activity], goals: [Goal]) {
-        let date = "Wed 5, June"
+        guard !activities.isEmpty else {
+            viewData = viewData.updated(
+                contentType: .empty,
+                requestedBefore: true
+            )
+            return
+        }
 
-        viewData = .init(
-            date: date,
+        viewData = viewData.updated(
             contentType: .data(
                 [
                     generateStepsData(activities, goals: goals)
                 ]
-            )
+            ),
+            requestedBefore: true
         )
     }
 
@@ -89,10 +106,23 @@ class SummaryViewState: ObservableObject {
 struct SummaryViewData: Equatable {
     let date: String
     let contentType: ContentType
+    let requestedBefore: Bool
 
     enum ContentType: Equatable {
         case empty
         case data([Category])
+    }
+
+    func updated(
+        date: String? = nil,
+        contentType: ContentType? = nil,
+        requestedBefore: Bool? = nil
+    ) -> Self {
+        .init(
+            date: date ?? self.date,
+            contentType: contentType ?? self.contentType,
+            requestedBefore: requestedBefore ?? self.requestedBefore
+        )
     }
 }
 
