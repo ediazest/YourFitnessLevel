@@ -20,13 +20,13 @@ struct CategoryView: View {
             currentProgress
 
             progressForNextAchievement.padding(.horizontal)
-            Text("You still need 1000 steps for  next award")
+            Text(category.message)
                 .padding(.horizontal)
 
             actionableButton.padding(.padding)
 
             if displayChart {
-                chart
+                ChartView(samples: category.samples)
             }
         }
         .padding(.top)
@@ -38,7 +38,12 @@ struct CategoryView: View {
     private var currentProgress: some View {
         HStack {
             Text("\(category.currentProgress)")
-            Text("steps")
+            Text(category.unit)
+            if let nextGoal = category.nextGoal {
+                Spacer()
+                Text("\(nextGoal) \(category.unit)")
+                    .foregroundColor(.blackOff)
+            }
         }
         .padding(.horizontal)
     }
@@ -51,55 +56,18 @@ struct CategoryView: View {
                 Rectangle()
                     .foregroundColor(.redCalories)
                     .frame(width: CGFloat(category.currentProgress) / CGFloat(category.nextGoal) * reader.size.width)
-            }).clipShape(RoundedRectangle(cornerSize: .init(width: 10, height: 10)))
+            })
+            .clipShape(RoundedRectangle(cornerSize: .init(width: 10, height: 10)))
     }
 
     private var actionableButton: some View {
-        Button(action: { displayChart.toggle() }) {
-            Text(displayChart ? "less" : "more")
-                .frame(maxWidth: .infinity, alignment: .trailing)
-        }
-    }
-
-    private var chart: some View {
-        Chart()
-    }
-}
-
-struct Chart: View {
-    var body: some View {
-        VStack {
-            Color.clear
-                .overlay(GeometryReader { reader in
-                    HStack(alignment: .bottom, spacing: 2) {
-                        ForEach(0..<48) { hour in
-                            VStack {
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color.green)
-                                    .frame(
-                                        width: (reader.size.width - 2 * 48) / 48,
-                                        height: CGFloat(hour) * CGFloat.random(in: 1..<5)
-                                    )
-                            }
-                        }
-                    }
-                })
-                .frame(height: 200)
-                .frame(maxWidth: .infinity, alignment: .leading)
-
-            HStack {
-                Text("00:00").font(.system(size: 8))
-                Spacer()
-                Text("06:00").font(.system(size: 8))
-                Spacer()
-                Text("12:00").font(.system(size: 8))
-                Spacer()
-                Text("18:00").font(.system(size: 8))
-                Spacer()
-            }.padding(.horizontal, 5)
-        }
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .frame(height: 250)
+        Button(
+            action: { displayChart.toggle() },
+            label: {
+                Text(displayChart ? "less" : "more")
+                    .frame(maxWidth: .infinity, alignment: .trailing)
+            }
+        )
     }
 }
 
@@ -109,8 +77,11 @@ struct CategoryView_Previews: PreviewProvider {
             category: .init(
                 achievedDailyGoals: true,
                 currentProgress: 40,
+                message: "You still need 1000 steps for  next award",
                 nextGoal: 100,
-                title: "Steps"
+                unit: "steps",
+                title: "Steps",
+                samples: []
             )
         )
     }
@@ -119,10 +90,4 @@ struct CategoryView_Previews: PreviewProvider {
 private extension CGFloat {
     static let padding: Self = 20
     static let cornerRadius: Self = 8
-}
-
-private extension Color {
-    static let redCalories = Color(red: 217 / 255, green: 48 / 255, blue: 48 / 255)
-
-    static let blackOff = Color.black.opacity(0.6)
 }

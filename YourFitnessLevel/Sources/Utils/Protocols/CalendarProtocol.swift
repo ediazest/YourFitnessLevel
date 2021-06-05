@@ -13,6 +13,8 @@ protocol CalendarProtocol {
     func date(from components: DateComponents) -> Date?
     func dateComponents(_ components: Set<Calendar.Component>, from date: Date) -> DateComponents
 
+    func date(byAdding component: Calendar.Component, value: Int, to date: Date, wrappingComponents: Bool) -> Date?
+
     func startOfDay(for date: Date) -> Date
 }
 

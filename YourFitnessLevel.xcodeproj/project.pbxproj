@@ -62,6 +62,9 @@
 		DCA67DD8266B8B6300308764 /* ActivityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DD7266B8B6300308764 /* ActivityUseCase.swift */; };
 		DCA67DDA266B934C00308764 /* CalendarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DD9266B934C00308764 /* CalendarProtocol.swift */; };
 		DCA67DDC266BAA6800308764 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DDB266BAA6800308764 /* Activity.swift */; };
+		DCA67DDE266BC1C500308764 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DDD266BC1C500308764 /* ChartView.swift */; };
+		DCA67DE2266BD5E200308764 /* ChartViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DE1266BD5E200308764 /* ChartViewState.swift */; };
+		DCA67DE5266BE76200308764 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DE4266BE76200308764 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,6 +137,9 @@
 		DCA67DD7266B8B6300308764 /* ActivityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityUseCase.swift; sourceTree = "<group>"; };
 		DCA67DD9266B934C00308764 /* CalendarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProtocol.swift; sourceTree = "<group>"; };
 		DCA67DDB266BAA6800308764 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		DCA67DDD266BC1C500308764 /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		DCA67DE1266BD5E200308764 /* ChartViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewState.swift; sourceTree = "<group>"; };
+		DCA67DE4266BE76200308764 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -319,6 +325,7 @@
 				DC12FD4D2668250200602376 /* SummaryView.swift */,
 				DC12FD4F2668285C00602376 /* SummaryViewState.swift */,
 				DC12FD592668345B00602376 /* CategoryView.swift */,
+				DCA67DE3266BD60700308764 /* ChartView */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -345,6 +352,7 @@
 				DC1926CA266AD81600873625 /* UIImage.swift */,
 				DC12FD572668330700602376 /* View.swift */,
 				DC1926CC266AD97900873625 /* Array.swift */,
+				DCA67DE4266BE76200308764 /* Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -549,6 +557,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		DCA67DE3266BD60700308764 /* ChartView */ = {
+			isa = PBXGroup;
+			children = (
+				DCA67DDD266BC1C500308764 /* ChartView.swift */,
+				DCA67DE1266BD5E200308764 /* ChartViewState.swift */,
+			);
+			path = ChartView;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -692,12 +709,15 @@
 				DC12FD702669438100602376 /* UserDefaultsProtocol.swift in Sources */,
 				DC67B872266968A500BCA8BF /* AwardsUseCase.swift in Sources */,
 				DC12FD002667F9C300602376 /* ContentView.swift in Sources */,
+				DCA67DDE266BC1C500308764 /* ChartView.swift in Sources */,
 				DC1926D0266AED2000873625 /* HelpView.swift in Sources */,
 				DC67B86526695E9300BCA8BF /* GoalsService.swift in Sources */,
 				DC12FD632669411700602376 /* Goal.swift in Sources */,
 				DC1926D2266AF81F00873625 /* HelpViewState.swift in Sources */,
 				DC12FD502668285C00602376 /* SummaryViewState.swift in Sources */,
+				DCA67DE5266BE76200308764 /* Color.swift in Sources */,
 				DC12FD74266947A900602376 /* URLSessionFactory.swift in Sources */,
+				DCA67DE2266BD5E200308764 /* ChartViewState.swift in Sources */,
 				DCA67DDA266B934C00308764 /* CalendarProtocol.swift in Sources */,
 				DC67B868266962D700BCA8BF /* GoalResponse.swift in Sources */,
 				DC12FD5A2668345B00602376 /* CategoryView.swift in Sources */,

@@ -59,18 +59,30 @@ class SummaryViewState: ObservableObject {
                 return []
             }
 
+        let currentProgress = steps.sum
         let nextGoal = goals
             .map { $0.goal }
-            .first(where: { $0 > steps.sum }) ?? 0
+            .first(where: { $0 > currentProgress }) ?? 0
 
-        let achievedDailyGoals = steps.sum > nextGoal
+        let achievedDailyGoals = currentProgress > nextGoal
 
         return .init(
             achievedDailyGoals: achievedDailyGoals,
-            currentProgress: steps.sum,
+            currentProgress: currentProgress,
+            message: message(currentProgress: currentProgress, nextGoal: nextGoal),
             nextGoal: nextGoal,
-            title: "Daily steps"
+            unit: "steps",
+            title: "Daily steps",
+            samples: steps.map { .init(date: $0.date, value: Double($0.count)) }
         )
+    }
+
+    private func message(currentProgress: Int, nextGoal: Int) -> String {
+        if nextGoal > currentProgress {
+            return "You still need \(nextGoal - currentProgress) steps for the next award"
+        } else {
+            return "Great job! You already reached your daily goals!🤩"
+        }
     }
 }
 
