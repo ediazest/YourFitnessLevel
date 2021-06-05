@@ -50,7 +50,7 @@ struct CategoryView: View {
             .overlay(GeometryReader { reader in
                 Rectangle()
                     .foregroundColor(.redCalories)
-                    .frame(width: CGFloat(category.currentProgress) / CGFloat(category.goal) * reader.size.width)
+                    .frame(width: CGFloat(category.currentProgress) / CGFloat(category.nextGoal) * reader.size.width)
             }).clipShape(RoundedRectangle(cornerSize: .init(width: 10, height: 10)))
     }
 
@@ -107,8 +107,9 @@ struct CategoryView_Previews: PreviewProvider {
     static var previews: some View {
         CategoryView(
             category: .init(
+                achievedDailyGoals: true,
                 currentProgress: 40,
-                goal: 100,
+                nextGoal: 100,
                 title: "Steps"
             )
         )

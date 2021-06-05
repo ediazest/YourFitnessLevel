@@ -8,7 +8,8 @@
 import Foundation
 
 struct Category: Equatable {
+    let achievedDailyGoals: Bool
     let currentProgress: Int
-    let goal: Int
+    let nextGoal: Int
     let title: String
 }

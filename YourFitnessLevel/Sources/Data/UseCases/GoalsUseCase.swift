@@ -6,6 +6,7 @@
 //
 
 import Combine
+import CombineSchedulers
 import Foundation
 
 protocol GoalsUseCaseProtocol {
@@ -20,10 +21,16 @@ class GoalsUseCase: GoalsUseCaseProtocol {
     private let goalsSubject = CurrentValueSubject<[Goal], Never>([])
     lazy var goals: AnyPublisher<[Goal], Never> = goalsSubject.eraseToAnyPublisher()
 
+    private let scheduler: AnySchedulerOf<DispatchQueue>
     private var subscriptions: [AnyCancellable] = []
+
+    init(scheduler: AnySchedulerOf<DispatchQueue> = .main) {
+        self.scheduler = scheduler
+    }
 
     func fetchGoals() {
         goalsRepository.fetch()
+            .receive(on: scheduler)
             .sink(
                 receiveCompletion: {
                     print($0)

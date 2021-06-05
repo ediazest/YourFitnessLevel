@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import HealthKit
 
 func injectDependencies(into container: DependencyContainer) {
     container.register(with: .factory) { _ -> JSONDecoderProtocol in
@@ -14,6 +15,10 @@ func injectDependencies(into container: DependencyContainer) {
 
     container.register(with: .factory) { _ -> JSONEncoderProtocol in
         JSONEncoder()
+    }
+
+    container.register(with: .factory) { _ -> CalendarProtocol in
+        Calendar.current
     }
 
     container.register(with: .factory) { _ -> UserDefaultStorageProtocol in
@@ -50,5 +55,17 @@ func injectDependencies(into container: DependencyContainer) {
 
     container.register(with: .singleton) { _ -> GoalsUseCaseProtocol in
         GoalsUseCase()
+    }
+
+    container.register(with: .singleton) { _ -> ActivityUseCaseProtocol in
+        ActivityUseCase()
+    }
+
+    container.register(with: .singleton) { _ -> HealthDataRepositoryProtocol in
+        HealthDataRepository()
+    }
+
+    container.register(with: .factory) { _ -> HealthStoreProtocol in
+        HKHealthStore()
     }
 }

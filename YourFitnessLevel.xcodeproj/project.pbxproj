@@ -56,6 +56,12 @@
 		DC67B88F266985BA00BCA8BF /* GoalsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B88E266985BA00BCA8BF /* GoalsRepositoryTests.swift */; };
 		DC67B89226698C4300BCA8BF /* DeferredFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B89126698C4300BCA8BF /* DeferredFuture.swift */; };
 		DC9BBAF726699846007E7503 /* GoalsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BBAF626699846007E7503 /* GoalsUseCase.swift */; };
+		DCA67DD0266B81A200308764 /* HealthDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DCF266B81A200308764 /* HealthDataRepository.swift */; };
+		DCA67DD2266B821000308764 /* HealthStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DD1266B821000308764 /* HealthStoreProtocol.swift */; };
+		DCA67DD6266B89F000308764 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCA67DD5266B89F000308764 /* HealthKit.framework */; };
+		DCA67DD8266B8B6300308764 /* ActivityUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DD7266B8B6300308764 /* ActivityUseCase.swift */; };
+		DCA67DDA266B934C00308764 /* CalendarProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DD9266B934C00308764 /* CalendarProtocol.swift */; };
+		DCA67DDC266BAA6800308764 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DDB266BAA6800308764 /* Activity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +127,13 @@
 		DC67B88E266985BA00BCA8BF /* GoalsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsRepositoryTests.swift; sourceTree = "<group>"; };
 		DC67B89126698C4300BCA8BF /* DeferredFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeferredFuture.swift; sourceTree = "<group>"; };
 		DC9BBAF626699846007E7503 /* GoalsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsUseCase.swift; sourceTree = "<group>"; };
+		DCA67DCF266B81A200308764 /* HealthDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataRepository.swift; sourceTree = "<group>"; };
+		DCA67DD1266B821000308764 /* HealthStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreProtocol.swift; sourceTree = "<group>"; };
+		DCA67DD3266B89F000308764 /* YourFitnessLevel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = YourFitnessLevel.entitlements; sourceTree = "<group>"; };
+		DCA67DD5266B89F000308764 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
+		DCA67DD7266B8B6300308764 /* ActivityUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityUseCase.swift; sourceTree = "<group>"; };
+		DCA67DD9266B934C00308764 /* CalendarProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarProtocol.swift; sourceTree = "<group>"; };
+		DCA67DDB266BAA6800308764 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC1926D7266B024C00873625 /* CombineSchedulers in Frameworks */,
+				DCA67DD6266B89F000308764 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,6 +162,7 @@
 				DC12FCFC2667F9C300602376 /* YourFitnessLevel */,
 				DC12FD0E2667F9C500602376 /* YourFitnessLevelTests */,
 				DC12FCFB2667F9C300602376 /* Products */,
+				DCA67DD4266B89F000308764 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +178,7 @@
 		DC12FCFC2667F9C300602376 /* YourFitnessLevel */ = {
 			isa = PBXGroup;
 			children = (
+				DCA67DD3266B89F000308764 /* YourFitnessLevel.entitlements */,
 				DC12FD032667F9C500602376 /* Preview Content */,
 				DC12FD2B2668019400602376 /* Resources */,
 				DC12FD2A2668018700602376 /* Sources */,
@@ -337,6 +353,7 @@
 			isa = PBXGroup;
 			children = (
 				DC12FD60266940CD00602376 /* GoalsRepository.swift */,
+				DCA67DCF266B81A200308764 /* HealthDataRepository.swift */,
 				DC67B86D2669659D00BCA8BF /* Mappers */,
 			);
 			path = Repositories;
@@ -385,9 +402,11 @@
 		DC12FD6A2669435B00602376 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
+				DCA67DD1266B821000308764 /* HealthStoreProtocol.swift */,
 				DC12FD6B2669437100602376 /* JSONDecoderProtocol.swift */,
 				DC12FD6D2669437900602376 /* JSONEncoderProtocol.swift */,
 				DC12FD6F2669438100602376 /* UserDefaultsProtocol.swift */,
+				DCA67DD9266B934C00308764 /* CalendarProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -424,6 +443,7 @@
 				DC12FD53266830A400602376 /* Category.swift */,
 				DC12FD622669411700602376 /* Goal.swift */,
 				DC67B86A2669645C00BCA8BF /* Reward.swift */,
+				DCA67DDB266BAA6800308764 /* Activity.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -441,6 +461,7 @@
 			children = (
 				DC67B871266968A500BCA8BF /* AwardsUseCase.swift */,
 				DC9BBAF626699846007E7503 /* GoalsUseCase.swift */,
+				DCA67DD7266B8B6300308764 /* ActivityUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -518,6 +539,14 @@
 				DC67B89126698C4300BCA8BF /* DeferredFuture.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DCA67DD4266B89F000308764 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DCA67DD5266B89F000308764 /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -659,6 +688,7 @@
 				DC12FD72266946F200602376 /* HttpClient.swift in Sources */,
 				DC9BBAF726699846007E7503 /* GoalsUseCase.swift in Sources */,
 				DC12FD582668330700602376 /* View.swift in Sources */,
+				DCA67DD2266B821000308764 /* HealthStoreProtocol.swift in Sources */,
 				DC12FD702669438100602376 /* UserDefaultsProtocol.swift in Sources */,
 				DC67B872266968A500BCA8BF /* AwardsUseCase.swift in Sources */,
 				DC12FD002667F9C300602376 /* ContentView.swift in Sources */,
@@ -668,11 +698,15 @@
 				DC1926D2266AF81F00873625 /* HelpViewState.swift in Sources */,
 				DC12FD502668285C00602376 /* SummaryViewState.swift in Sources */,
 				DC12FD74266947A900602376 /* URLSessionFactory.swift in Sources */,
+				DCA67DDA266B934C00308764 /* CalendarProtocol.swift in Sources */,
 				DC67B868266962D700BCA8BF /* GoalResponse.swift in Sources */,
 				DC12FD5A2668345B00602376 /* CategoryView.swift in Sources */,
+				DCA67DD8266B8B6300308764 /* ActivityUseCase.swift in Sources */,
+				DCA67DD0266B81A200308764 /* HealthDataRepository.swift in Sources */,
 				DC12FD35266807B600602376 /* DependencyContainer.swift in Sources */,
 				DC1926C8266AD10600873625 /* AwardsViewState.swift in Sources */,
 				DC1926CB266AD81600873625 /* UIImage.swift in Sources */,
+				DCA67DDC266BAA6800308764 /* Activity.swift in Sources */,
 				DC1926C6266ACC7500873625 /* AwardsView.swift in Sources */,
 				DC67B89226698C4300BCA8BF /* DeferredFuture.swift in Sources */,
 				DC12FD6C2669437100602376 /* JSONDecoderProtocol.swift in Sources */,
@@ -838,6 +872,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = YourFitnessLevel/YourFitnessLevel.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"YourFitnessLevel/Preview Content\"";
 				DEVELOPMENT_TEAM = G62HZCES4Y;
@@ -860,6 +895,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = YourFitnessLevel/YourFitnessLevel.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"YourFitnessLevel/Preview Content\"";
 				DEVELOPMENT_TEAM = G62HZCES4Y;

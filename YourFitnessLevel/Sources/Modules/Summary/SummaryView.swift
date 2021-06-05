@@ -79,9 +79,9 @@ struct SummaryView: View {
 struct SummaryView_Previews: PreviewProvider {
 
     static let categories: [Category] = [
-        .init(currentProgress: 50, goal: 100, title: "Steps"),
-        .init(currentProgress: 50, goal: 5000, title: "Walking distance"),
-        .init(currentProgress: 0, goal: 100, title: "Running distance")
+        .init(achievedDailyGoals: false, currentProgress: 50, nextGoal: 100, title: "Steps"),
+        .init(achievedDailyGoals: true, currentProgress: 50, nextGoal: 5000, title: "Walking distance"),
+        .init(achievedDailyGoals: false, currentProgress: 0, nextGoal: 100, title: "Running distance")
     ]
 
     static var previews: some View {
