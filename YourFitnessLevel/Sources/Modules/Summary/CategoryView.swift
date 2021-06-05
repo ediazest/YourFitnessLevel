@@ -13,13 +13,15 @@ struct CategoryView: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
-            Text(category.title).padding(.padding)
-            progressForNextAchievement
-            HStack {
-                currentProgress
-                Spacer()
-                goal
-            }.padding(.padding)
+            Label(category.title, image: "iconCalories")
+                .foregroundColor(.redCalories)
+                .padding(.horizontal)
+
+            currentProgress
+
+            progressForNextAchievement.padding(.horizontal)
+            Text("You still need 1000 steps for  next award")
+                .padding(.horizontal)
 
             actionableButton.padding(.padding)
 
@@ -27,36 +29,29 @@ struct CategoryView: View {
                 chart
             }
         }
-        .frame(alignment: .topLeading)
-
-        .background(
-            Color.yellow
-                .cornerRadius(.cornerRadius)
-        )
+        .padding(.top)
+        .frame(alignment: .leading)
+        .background(Color.white.opacity(0.3))
+        .cornerRadius(8)
     }
 
     private var currentProgress: some View {
-        VStack {
-            Text("Your progress")
+        HStack {
             Text("\(category.currentProgress)")
+            Text("steps")
         }
-    }
-
-    private var goal: some View {
-        VStack {
-            Text("Your next goal")
-            Text("\(category.goal)")
-        }
+        .padding(.horizontal)
     }
 
     private var progressForNextAchievement: some View {
-        Color.green
-            .frame(maxWidth: .infinity, maxHeight: 25)
+        Color.blackOff
+            .frame(maxWidth: .infinity)
+            .frame(height: 35)
             .overlay(GeometryReader { reader in
                 Rectangle()
-                    .foregroundColor(Color.black)
+                    .foregroundColor(.redCalories)
                     .frame(width: CGFloat(category.currentProgress) / CGFloat(category.goal) * reader.size.width)
-            })
+            }).clipShape(RoundedRectangle(cornerSize: .init(width: 10, height: 10)))
     }
 
     private var actionableButton: some View {
@@ -123,4 +118,10 @@ struct CategoryView_Previews: PreviewProvider {
 private extension CGFloat {
     static let padding: Self = 20
     static let cornerRadius: Self = 8
+}
+
+private extension Color {
+    static let redCalories = Color(red: 217 / 255, green: 48 / 255, blue: 48 / 255)
+
+    static let blackOff = Color.black.opacity(0.6)
 }

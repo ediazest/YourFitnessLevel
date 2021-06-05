@@ -45,16 +45,17 @@ struct HelpView: View {
     private var header: some View {
         VStack(spacing: 10) {
             Text("We do not store or share your activity data, "
-                 + "only your achivements.")
+                    + "only your achivements.")
                 .font(.system(.body))
                 .frame(maxWidth: .infinity, alignment: .leading)
 
             Text("Every time you open the app we get fresh data from "
-                 + "the current month and run our highly complex algorithm🙄.")
+                    + "the current month and run our highly complex algorithm🙄.")
                 .font(.system(.body))
                 .frame(maxWidth: .infinity, alignment: .leading)
 
-            Text("If you want better awards, you can start by the following ")
+            Text("Our points are based on your running and walking workous " +
+                    "and steps")
                 .font(.system(.body))
                 .frame(maxWidth: .infinity, alignment: .leading)
         }
@@ -73,27 +74,28 @@ private struct GoalView: View {
     let goal: HelpViewData.Goal
 
     var body: some View {
-            HStack {
-                Image(goal.image)
-                VStack(alignment: .leading, spacing: 10) {
-                    Text(goal.title)
-                        .font(.title2)
-                        .bold()
+        HStack {
+            Image(goal.image)
+            VStack(alignment: .leading, spacing: 10) {
+                Text(goal.title)
+                    .font(.title2)
+                    .bold()
 
-                    Text(goal.description)
-                        .font(.callout)
-                        .lineLimit(4)
+                Text(goal.description)
+                    .font(.callout)
+                    .lineLimit(4)
 
-                    Text("Points ").font(.title2)
-                        + Text("\(goal.points)")
-                        .font(.title2)
-                        .bold()
-                }
+                Text("Points ").font(.title2)
+                    + Text("\(goal.points)")
+                    .font(.title2)
+                    .bold()
             }
+        }
 
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
         .background(Color.white.opacity(0.3))
+        .shadow(radius: 20)
         .cornerRadius(8)
     }
 }

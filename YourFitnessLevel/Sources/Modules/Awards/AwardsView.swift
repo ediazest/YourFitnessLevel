@@ -47,7 +47,8 @@ struct AwardsView: View {
                 .foregroundColor(.white)
                 .frame(maxWidth: .infinity, alignment: .center)
 
-            Text("We know you have been working hard lately, here you can see your achievements within the current month")
+            Text("We know you have been working hard lately, here you can see "
+                    + "your achievements within the current month")
                 .font(.system(.body))
                 .foregroundColor(.white)
                 .fixedSize(horizontal: false, vertical: true)
@@ -93,6 +94,7 @@ private struct MedalView: View {
         .padding(.horizontal)
         .padding()
         .background(Color.white.opacity(0.3))
+        .shadow(radius: 20)
         .cornerRadius(8)
     }
 }
