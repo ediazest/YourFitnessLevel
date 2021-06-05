@@ -15,6 +15,7 @@ struct SummaryView: View {
         content
             .padding(.horizontal, 20)
             .padding(.top)
+            .background(Color.black.edgesIgnoringSafeArea(.all))
             .onAppear(perform: state.handleViewAppear)
     }
 
@@ -32,8 +33,10 @@ struct SummaryView: View {
             header
             Spacer()
             Text("We need access to health date to show your progress")
+                .foregroundColor(.white)
             Button(action: state.handleRequestAccessToData) {
                 Text("gooo")
+                    .foregroundColor(.white)
             }
             Spacer()
         }
@@ -44,6 +47,7 @@ struct SummaryView: View {
             LazyVStack(alignment: .leading) {
                 header
                 Text("5 min ago")
+                    .foregroundColor(.white)
                 categories
             }
         }
@@ -64,8 +68,10 @@ struct SummaryView: View {
     private var header: some View {
         HStack {
             Text("Summary")
+                .foregroundColor(.white)
             Spacer()
             Text(state.viewData.date)
+                .foregroundColor(.white)
         }.frame(maxWidth: .infinity, alignment: .leading)
     }
 }

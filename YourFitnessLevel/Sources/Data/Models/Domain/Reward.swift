@@ -17,4 +17,17 @@ enum Trophy: String {
     case silver = "silver_medal"
     case gold = "gold_medal"
     case zombie = "zombie_hand"
+    
+    var image: String {
+        switch self {
+        case .bronze:
+            return "bronzeMedal"
+        case .silver:
+            return "silverMedal"
+        case .gold:
+            return "goldMedal"
+        case .zombie:
+            return "zombieHand"
+        }
+    }
 }

@@ -10,26 +10,31 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var state = ContentViewState()
 
+    init() {
+        UITabBar.appearance().barTintColor = UIColor.black
+    }
+
     var body: some View {
         TabView {
             summaryTab
             awardsTab
         }
+        .accentColor(.white)
+        .preferredColorScheme(.dark)
         .onAppear(perform: state.handleOnAppear)
     }
 
     private var summaryTab: some View {
         SummaryView()
             .tabItem {
-                Label("Summary", systemImage: "list.dash")
+                Label("Today", image: "iconRunning")
             }
     }
 
     private var awardsTab: some View {
-        Text("Hello, world!")
-            .padding()
+        AwardsView()
             .tabItem {
-                Label("Your Awards", systemImage: "list.dash")
+                Label("Your Awards", image: "iconAward")
             }
     }
 }

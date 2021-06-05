@@ -32,6 +32,13 @@
 		DC12FD702669438100602376 /* UserDefaultsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD6F2669438100602376 /* UserDefaultsProtocol.swift */; };
 		DC12FD72266946F200602376 /* HttpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD71266946F200602376 /* HttpClient.swift */; };
 		DC12FD74266947A900602376 /* URLSessionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC12FD73266947A900602376 /* URLSessionFactory.swift */; };
+		DC1926C6266ACC7500873625 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926C5266ACC7500873625 /* AwardsView.swift */; };
+		DC1926C8266AD10600873625 /* AwardsViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926C7266AD10600873625 /* AwardsViewState.swift */; };
+		DC1926CB266AD81600873625 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926CA266AD81600873625 /* UIImage.swift */; };
+		DC1926CD266AD97900873625 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926CC266AD97900873625 /* Array.swift */; };
+		DC1926D0266AED2000873625 /* HelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926CF266AED2000873625 /* HelpView.swift */; };
+		DC1926D2266AF81F00873625 /* HelpViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC1926D1266AF81F00873625 /* HelpViewState.swift */; };
+		DC1926D7266B024C00873625 /* CombineSchedulers in Frameworks */ = {isa = PBXBuildFile; productRef = DC1926D6266B024C00873625 /* CombineSchedulers */; };
 		DC67B86526695E9300BCA8BF /* GoalsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B86426695E9300BCA8BF /* GoalsService.swift */; };
 		DC67B868266962D700BCA8BF /* GoalResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B867266962D700BCA8BF /* GoalResponse.swift */; };
 		DC67B86B2669645C00BCA8BF /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B86A2669645C00BCA8BF /* Reward.swift */; };
@@ -91,6 +98,12 @@
 		DC12FD6F2669438100602376 /* UserDefaultsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsProtocol.swift; sourceTree = "<group>"; };
 		DC12FD71266946F200602376 /* HttpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpClient.swift; sourceTree = "<group>"; };
 		DC12FD73266947A900602376 /* URLSessionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionFactory.swift; sourceTree = "<group>"; };
+		DC1926C5266ACC7500873625 /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
+		DC1926C7266AD10600873625 /* AwardsViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsViewState.swift; sourceTree = "<group>"; };
+		DC1926CA266AD81600873625 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		DC1926CC266AD97900873625 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		DC1926CF266AED2000873625 /* HelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpView.swift; sourceTree = "<group>"; };
+		DC1926D1266AF81F00873625 /* HelpViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewState.swift; sourceTree = "<group>"; };
 		DC67B86426695E9300BCA8BF /* GoalsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsService.swift; sourceTree = "<group>"; };
 		DC67B867266962D700BCA8BF /* GoalResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalResponse.swift; sourceTree = "<group>"; };
 		DC67B86A2669645C00BCA8BF /* Reward.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
@@ -115,6 +128,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC1926D7266B024C00873625 /* CombineSchedulers in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +289,8 @@
 		DC12FD4B2668249800602376 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				DC1926CE266AECE000873625 /* Help */,
+				DC1926C4266ACC5F00873625 /* Awards */,
 				DC67B8732669718D00BCA8BF /* Content */,
 				DC12FD4C266824A100602376 /* Summary */,
 			);
@@ -310,7 +326,9 @@
 		DC12FD552668326800602376 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				DC1926CA266AD81600873625 /* UIImage.swift */,
 				DC12FD572668330700602376 /* View.swift */,
+				DC1926CC266AD97900873625 /* Array.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -372,6 +390,24 @@
 				DC12FD6F2669438100602376 /* UserDefaultsProtocol.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		DC1926C4266ACC5F00873625 /* Awards */ = {
+			isa = PBXGroup;
+			children = (
+				DC1926C5266ACC7500873625 /* AwardsView.swift */,
+				DC1926C7266AD10600873625 /* AwardsViewState.swift */,
+			);
+			path = Awards;
+			sourceTree = "<group>";
+		};
+		DC1926CE266AECE000873625 /* Help */ = {
+			isa = PBXGroup;
+			children = (
+				DC1926CF266AED2000873625 /* HelpView.swift */,
+				DC1926D1266AF81F00873625 /* HelpViewState.swift */,
+			);
+			path = Help;
 			sourceTree = "<group>";
 		};
 		DC67B8692669639800BCA8BF /* Responses */ = {
@@ -502,6 +538,7 @@
 			);
 			name = YourFitnessLevel;
 			packageProductDependencies = (
+				DC1926D6266B024C00873625 /* CombineSchedulers */,
 			);
 			productName = YourFitnessLevel;
 			productReference = DC12FCFA2667F9C300602376 /* YourFitnessLevel.app */;
@@ -555,6 +592,7 @@
 			mainGroup = DC12FCF12667F9C300602376;
 			packageReferences = (
 				DC12FD2E2668046000602376 /* XCRemoteSwiftPackageReference "SwiftLint" */,
+				DC1926D5266B024C00873625 /* XCRemoteSwiftPackageReference "combine-schedulers" */,
 			);
 			productRefGroup = DC12FCFB2667F9C300602376 /* Products */;
 			projectDirPath = "";
@@ -624,13 +662,18 @@
 				DC12FD702669438100602376 /* UserDefaultsProtocol.swift in Sources */,
 				DC67B872266968A500BCA8BF /* AwardsUseCase.swift in Sources */,
 				DC12FD002667F9C300602376 /* ContentView.swift in Sources */,
+				DC1926D0266AED2000873625 /* HelpView.swift in Sources */,
 				DC67B86526695E9300BCA8BF /* GoalsService.swift in Sources */,
 				DC12FD632669411700602376 /* Goal.swift in Sources */,
+				DC1926D2266AF81F00873625 /* HelpViewState.swift in Sources */,
 				DC12FD502668285C00602376 /* SummaryViewState.swift in Sources */,
 				DC12FD74266947A900602376 /* URLSessionFactory.swift in Sources */,
 				DC67B868266962D700BCA8BF /* GoalResponse.swift in Sources */,
 				DC12FD5A2668345B00602376 /* CategoryView.swift in Sources */,
 				DC12FD35266807B600602376 /* DependencyContainer.swift in Sources */,
+				DC1926C8266AD10600873625 /* AwardsViewState.swift in Sources */,
+				DC1926CB266AD81600873625 /* UIImage.swift in Sources */,
+				DC1926C6266ACC7500873625 /* AwardsView.swift in Sources */,
 				DC67B89226698C4300BCA8BF /* DeferredFuture.swift in Sources */,
 				DC12FD6C2669437100602376 /* JSONDecoderProtocol.swift in Sources */,
 				DC12FD54266830A400602376 /* Category.swift in Sources */,
@@ -638,6 +681,7 @@
 				DC12FD332668074400602376 /* Injected.swift in Sources */,
 				DC12FD68266942E800602376 /* UserDefaultStorage.swift in Sources */,
 				DC12FD3726680FDA00602376 /* Dependencies.swift in Sources */,
+				DC1926CD266AD97900873625 /* Array.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -923,7 +967,23 @@
 				minimumVersion = 0.43.1;
 			};
 		};
+		DC1926D5266B024C00873625 /* XCRemoteSwiftPackageReference "combine-schedulers" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/combine-schedulers";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DC1926D6266B024C00873625 /* CombineSchedulers */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC1926D5266B024C00873625 /* XCRemoteSwiftPackageReference "combine-schedulers" */;
+			productName = CombineSchedulers;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DC12FCF22667F9C300602376 /* Project object */;
 }
