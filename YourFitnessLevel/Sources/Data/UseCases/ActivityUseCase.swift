@@ -6,13 +6,14 @@
 //
 
 import Combine
+import CombineSchedulers
 import Foundation
 
 protocol ActivityUseCaseProtocol {
     var activities: AnyPublisher<[Activity], Never> { get }
-    func fetch()
-
     var runningMonthSteps: AnyPublisher<Activity?, Never> { get }
+
+    func fetch()
 }
 
 class ActivityUseCase: ActivityUseCaseProtocol {
@@ -26,7 +27,12 @@ class ActivityUseCase: ActivityUseCaseProtocol {
     lazy var runningMonthSteps: AnyPublisher<Activity?, Never> = runningMonthStepsSubject
         .eraseToAnyPublisher()
 
+    private let scheduler: AnySchedulerOf<DispatchQueue>
     private var subscriptions: [AnyCancellable] = []
+
+    init(scheduler: AnySchedulerOf<DispatchQueue> = .main) {
+        self.scheduler = scheduler
+    }
 
     func fetch() {
         fetchTodaysSteps()
@@ -40,38 +46,34 @@ class ActivityUseCase: ActivityUseCaseProtocol {
             intervalInMinutes: .twicePerHour,
             type: .steps
         )
-        .handleEvents(receiveOutput: {[update] in
-            update($0)
+        .handleEvents(receiveOutput: {[activitiesSubject] in
+            activitiesSubject.send([$0])
         })
-        .map { _ in Void() }
-        .sink(receiveCompletion: {
-            print($0)
-        }, receiveValue: {})
+        .subscribe()
         .store(in: &subscriptions)
     }
 
     private func fetchMonthSteps() {
+        var sameMonthComponents = calendar.dateComponents([.month, .year], from: calendar.currentDate)
+        sameMonthComponents.day = 1
+        sameMonthComponents.hour = 0
+        sameMonthComponents.minute = 0
+
         healthDataRepository.fetchActivityData(
-            startDate: calendar.startOfDay(for: calendar.currentDate),
+            startDate: calendar.date(from: sameMonthComponents) ?? calendar.currentDate,
             endDate: calendar.currentDate,
-            intervalInMinutes: .twicePerHour,
+            intervalInMinutes: .oncePerDay,
             type: .steps
         )
         .handleEvents(receiveOutput: {[runningMonthStepsSubject] in
             runningMonthStepsSubject.send($0)
         })
-        .map { _ in Void() }
-        .sink(receiveCompletion: {
-            print($0)
-        }, receiveValue: {})
+        .subscribe()
         .store(in: &subscriptions)
-    }
-
-    private func update(_ activity: Activity) {
-        activitiesSubject.send([activity])
     }
 }
 
 private extension Int {
     static let twicePerHour: Self = 30
+    static let oncePerDay: Self = 60 * 24
 }

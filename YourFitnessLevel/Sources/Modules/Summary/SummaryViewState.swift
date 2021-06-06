@@ -10,31 +10,34 @@ import CombineSchedulers
 import Foundation
 
 class SummaryViewState: ObservableObject {
-    @Published var viewData: SummaryViewData = .init(
-        date: "",
-        contentType: .empty,
-        requestedBefore: false
-        )
+    @Published var viewData: SummaryViewData = .init()
 
     @Injected private var activityUseCase: ActivityUseCaseProtocol
     @Injected private var calendar: CalendarProtocol
     @Injected private var dateFormatter: DateFormatterProtocol
     @Injected private var goalsUseCase: GoalsUseCaseProtocol
+    @Injected private var storage: UserDefaultStorageProtocol
 
     private let scheduler: AnySchedulerOf<DispatchQueue>
     private var subscriptions: [AnyCancellable] = []
+
+    private var healthAccessRequestedBefore: Bool {
+        (try? storage.get(key: .healthAccessRequested)) == true
+    }
 
     init(scheduler: AnySchedulerOf<DispatchQueue> = .main) {
         self.scheduler = scheduler
         dateFormatter.dateFormat = "E, d MMM"
         viewData = viewData.updated(
             date: dateFormatter.string(from: calendar.currentDate),
-            requestedBefore: false
+            requestedBefore: healthAccessRequestedBefore
         )
     }
 
     func handleViewAppear() {
-        activityUseCase.fetch()
+        if healthAccessRequestedBefore {
+            handleRequestAccessToData()
+        }
     }
 
     func handleRequestAccessToData() {
@@ -47,6 +50,8 @@ class SummaryViewState: ObservableObject {
             handleActivityData($0, $1)
         }
         .store(in: &subscriptions)
+
+        activityUseCase.fetch()
     }
 
     private func handleActivityData(activities: [Activity], goals: [Goal]) {
@@ -111,6 +116,16 @@ struct SummaryViewData: Equatable {
     enum ContentType: Equatable {
         case empty
         case data([Category])
+    }
+
+    init(
+        date: String = "",
+        contentType: ContentType = .empty,
+        requestedBefore: Bool = false
+    ) {
+        self.date = date
+        self.contentType = contentType
+        self.requestedBefore = requestedBefore
     }
 
     func updated(

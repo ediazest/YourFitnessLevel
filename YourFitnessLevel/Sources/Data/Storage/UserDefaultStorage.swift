@@ -43,3 +43,7 @@ class UserDefaultStorage: UserDefaultStorageProtocol {
         userDefaults.set(data, forKey: key)
     }
 }
+
+extension String {
+    static let healthAccessRequested: Self = "health_requested_key"
+}

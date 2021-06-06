@@ -32,9 +32,7 @@ class GoalsUseCase: GoalsUseCaseProtocol {
         goalsRepository.fetch()
             .receive(on: scheduler)
             .sink(
-                receiveCompletion: {
-                    print($0)
-                },
+                receiveCompletion: { _ in },
                 receiveValue: { [goalsSubject] in
                     goalsSubject.value = $0
                 }

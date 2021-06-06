@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Goal {
+struct Goal: Equatable {
     let identifier: String
     let title: String
     let description: String

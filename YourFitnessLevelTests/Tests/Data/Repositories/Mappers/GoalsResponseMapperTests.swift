@@ -35,7 +35,7 @@ class GoalsResponseMapperTests: XCTestCase {
             XCTAssertEqual(item.type, GoalType(rawValue: goalResponse.items[index].type))
             XCTAssertEqual(item.goal, goalResponse.items[index].goal)
             XCTAssertEqual(item.reward, .init(
-                            trophy: .init(rawValue: goalResponse.items[index].reward.trophy),
+                            trophy: Trophy(rawValue: goalResponse.items[index].reward.trophy) ?? Trophy.bronze,
                             points: goalResponse.items[index].reward.points))
         }
     }

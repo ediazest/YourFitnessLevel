@@ -23,8 +23,7 @@ protocol HealthDataRepositoryProtocol {
 class HealthDataRepository: HealthDataRepositoryProtocol {
     @Injected private var calendar: CalendarProtocol
     @Injected private var healthStore: HealthStoreProtocol
-
-    private var subscriptions: [AnyCancellable] = []
+    @Injected private var storage: UserDefaultStorageProtocol
 
     var isAvailable: Bool {
         healthStore.isHealthDataAvailable
@@ -47,7 +46,7 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
     }
 
     private func requestHealthKitPermission() -> AnyPublisher<Bool, Error> {
-        DeferredFuture<Bool, Error> { [healthStore] promise in
+        DeferredFuture<Bool, Error> { [healthStore, storage] promise in
             guard let stepCountRequest = HKObjectType.quantityType(forIdentifier: .stepCount) else {
                 promise(.failure(HealthStoreError.noStepCount))
                 return
@@ -59,6 +58,7 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
                 read: [stepCountRequest, workoutsRequest]) { success, error in
                 guard let error = error else {
                     promise(.success(success))
+                    try? storage.set(value: true, key: .healthAccessRequested)
                     return
                 }
                 promise(.failure(error))
@@ -80,7 +80,11 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
 
             let query = HKStatisticsCollectionQuery(
                 quantityType: quantityType,
-                quantitySamplePredicate: HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .init()),
+                quantitySamplePredicate: HKQuery.predicateForSamples(
+                    withStart: startDate,
+                    end: endDate,
+                    options: .init()
+                ),
                 options: .cumulativeSum,
                 anchorDate: anchorDate,
                 intervalComponents: DateComponents(minute: intervalInMinutes)
@@ -94,7 +98,10 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
 
                 let steps = statsCollection.statistics()
                     .map {
-                        Step(date: $0.startDate, count: Int($0.sumQuantity()?.doubleValue(for: .count()) ?? 0))
+                        Step(
+                            date: $0.startDate,
+                            count: Int($0.sumQuantity()?.doubleValue(for: .count()) ?? 0)
+                        )
                     }
                 promise(.success(.steps(steps)))
             }

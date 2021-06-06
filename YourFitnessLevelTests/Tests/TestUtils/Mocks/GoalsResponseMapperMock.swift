@@ -16,9 +16,9 @@ class GoalsResponseMapperMock: GoalsResponseMapperProtocol {
 
     var calls: [Call] = []
 
-    var returnedGoals: [Goal] = []
+    var returnedGoals: [[Goal]] = []
     func map(_ source: GoalResponse) -> [Goal] {
         calls.append(.map(source))
-        return returnedGoals
+        return returnedGoals.popLast() ?? []
     }
 }

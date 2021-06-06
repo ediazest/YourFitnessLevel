@@ -30,6 +30,7 @@ struct AwardsView: View {
         VStack(alignment: .leading, spacing: 30) {
             HStack {
                 Text("Your points")
+                    .bold()
                     .font(.system(.title2))
                     .foregroundColor(.white)
 
@@ -47,15 +48,17 @@ struct AwardsView: View {
 
             Text("\(state.viewData.points)")
                 .modifier(NumberView(number: state.viewData.points))
-                .frame(maxWidth: .infinity, alignment: .center)
+                .frame(maxWidth: .infinity, idealHeight: 50, alignment: .center)
                 .font(.system(size: 50, weight: .light, design: .default))
                 .foregroundColor(.white)
+                .frame(height: 50)
 
             Text("We know you have been working hard lately, here you can see "
                     + "your achievements in the running month")
                 .font(.system(.body))
                 .foregroundColor(.white)
                 .fixedSize(horizontal: false, vertical: true)
+                .animation(nil)
         }
     }
 
@@ -63,6 +66,7 @@ struct AwardsView: View {
         VStack(alignment: .leading) {
             Text("Your achivements")
                 .font(.system(.title2))
+                .bold()
                 .foregroundColor(.white)
                 .animation(nil)
 

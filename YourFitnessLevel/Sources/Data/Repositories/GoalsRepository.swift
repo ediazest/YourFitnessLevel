@@ -26,7 +26,6 @@ class GoalsRepository: GoalsRepositoryProtocol {
                 }
                 promise(.success(goalsResponseMapper.map(stored)))
             } catch {
-                debugPrint(error)
                 promise(.success([]))
             }
         }.eraseToAnyPublisher()
@@ -34,11 +33,12 @@ class GoalsRepository: GoalsRepositoryProtocol {
 
     private var remoteGoalsPublisher: AnyPublisher<[Goal], Error> {
         goalsService.fetch()
-           .handleEvents(receiveOutput: { [userDefaultStorage] in
-               try? userDefaultStorage.set(value: $0, key: .goalsKey)
-           })
-           .map { [goalsResponseMapper] in goalsResponseMapper.map($0) }
-           .eraseToAnyPublisher()
+            .handleEvents(receiveOutput: { [userDefaultStorage] in
+                try? userDefaultStorage.set(value: $0, key: .goalsKey)
+            })
+            .map { [goalsResponseMapper] in goalsResponseMapper.map($0) }
+            .tryCatch { [localGoalsPublisher] _ in localGoalsPublisher }
+            .eraseToAnyPublisher()
     }
 
     func fetch() -> AnyPublisher<[Goal], Error> {
