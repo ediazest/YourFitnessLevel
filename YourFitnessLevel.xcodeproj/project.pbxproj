@@ -64,6 +64,7 @@
 		DC988D31266D19290073DF87 /* CategoryViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D30266D19290073DF87 /* CategoryViewTests.swift */; };
 		DC988D33266D1CA20073DF87 /* DateFormatterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D32266D1CA20073DF87 /* DateFormatterMock.swift */; };
 		DC988D35266D1FC90073DF87 /* ChartViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D34266D1FC90073DF87 /* ChartViewTests.swift */; };
+		DC988D37266D33D70073DF87 /* MedalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D36266D33D70073DF87 /* MedalView.swift */; };
 		DC9BBAF726699846007E7503 /* GoalsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BBAF626699846007E7503 /* GoalsUseCase.swift */; };
 		DCA67DD0266B81A200308764 /* HealthDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DCF266B81A200308764 /* HealthDataRepository.swift */; };
 		DCA67DD2266B821000308764 /* HealthStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DD1266B821000308764 /* HealthStoreProtocol.swift */; };
@@ -167,6 +168,7 @@
 		DC988D30266D19290073DF87 /* CategoryViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewTests.swift; sourceTree = "<group>"; };
 		DC988D32266D1CA20073DF87 /* DateFormatterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterMock.swift; sourceTree = "<group>"; };
 		DC988D34266D1FC90073DF87 /* ChartViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewTests.swift; sourceTree = "<group>"; };
+		DC988D36266D33D70073DF87 /* MedalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalView.swift; sourceTree = "<group>"; };
 		DC9BBAF626699846007E7503 /* GoalsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsUseCase.swift; sourceTree = "<group>"; };
 		DCA67DCF266B81A200308764 /* HealthDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataRepository.swift; sourceTree = "<group>"; };
 		DCA67DD1266B821000308764 /* HealthStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreProtocol.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 			children = (
 				DC1926C5266ACC7500873625 /* AwardsView.swift */,
 				DC1926C7266AD10600873625 /* AwardsViewState.swift */,
+				DC988D36266D33D70073DF87 /* MedalView.swift */,
 			);
 			path = Awards;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				DC1926D0266AED2000873625 /* HelpView.swift in Sources */,
 				DC67B86526695E9300BCA8BF /* GoalsService.swift in Sources */,
 				DC12FD632669411700602376 /* Goal.swift in Sources */,
+				DC988D37266D33D70073DF87 /* MedalView.swift in Sources */,
 				DC1926D2266AF81F00873625 /* HelpViewState.swift in Sources */,
 				DC12FD502668285C00602376 /* SummaryViewState.swift in Sources */,
 				DCA67DE5266BE76200308764 /* Color.swift in Sources */,

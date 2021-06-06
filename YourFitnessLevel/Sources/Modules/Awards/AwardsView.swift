@@ -10,17 +10,32 @@ import SwiftUI
 
 struct AwardsView: View {
     @StateObject var state: AwardsViewState = AwardsViewState()
+    @State var points: Int = 0
+
+    init(state: AwardsViewState = AwardsViewState()) {
+        _state = StateObject(wrappedValue: state)
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+    }
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 30) {
-                header
-                medals
+        NavigationView {
+            ZStack {
+                Color.black.opacity(0.8).edgesIgnoringSafeArea(.all)
+                ScrollView {
+                    VStack(spacing: 30) {
+                        header
+                        medals
+                    }
+                }
             }
+            .navigationTitle("Your Awards")
+            .toolbar(content: { helpButton })
+            .padding()
+            .background(Color.black.edgesIgnoringSafeArea(.all), alignment: .center)
         }
-        .animation(.default)
-        .padding()
-        .background(Color.black.edgesIgnoringSafeArea(.all), alignment: .center)
+        .onReceive(state.$viewData, perform: animateChanges)
+        .accentColor(.white)
+        .foregroundColor(.white)
         .sheet(isPresented: $state.presentHelp) {
             HelpView()
         }
@@ -28,30 +43,19 @@ struct AwardsView: View {
 
     private var header: some View {
         VStack(alignment: .leading, spacing: 30) {
-            HStack {
-                Text("Your points")
+
+            HStack(alignment: .lastTextBaseline, spacing: 10) {
+                Text("\(points)")
+                    .modifier(NumberView(number: points))
+                    .font(.system(size: 50, weight: .light, design: .default))
+                    .foregroundColor(.white)
+
+                Text("points")
                     .bold()
                     .font(.system(.title2))
                     .foregroundColor(.white)
-
-                Spacer()
-
-                if state.viewData.shouldDisplayHelpButton {
-                    Button(action: state.handleHelpButtonTap) {
-                        Image.question
-                            .foregroundColor(.white)
-                            .padding()
-                    }
-                }
-            }
-            .animation(nil)
-
-            Text("\(state.viewData.points)")
-                .modifier(NumberView(number: state.viewData.points))
-                .frame(maxWidth: .infinity, idealHeight: 50, alignment: .center)
-                .font(.system(size: 50, weight: .light, design: .default))
-                .foregroundColor(.white)
-                .frame(height: 50)
+                    .animation(nil)
+            }.frame(maxWidth: .infinity, alignment: .center)
 
             Text("We know you have been working hard lately, here you can see "
                     + "your achievements in the running month")
@@ -60,6 +64,18 @@ struct AwardsView: View {
                 .fixedSize(horizontal: false, vertical: true)
                 .animation(nil)
         }
+    }
+
+    private var helpButton: AnyView? {
+        guard state.viewData.shouldDisplayHelpButton else { return nil }
+
+        return Button(action: state.handleHelpButtonTap) {
+            Image.question
+                .foregroundColor(.white)
+                .padding()
+        }
+        .foregroundColor(.white)
+        .asAnyView
     }
 
     private var medals: some View {
@@ -78,56 +94,17 @@ struct AwardsView: View {
         }
     }
 
+    private func animateChanges(viewData: AwardsViewData) {
+        withAnimation {
+            self.points = viewData.points
+        }
+    }
+
     private let columns: [GridItem] =
         [
             GridItem(.flexible()),
             GridItem(.flexible())
         ]
-}
-
-private struct MedalView: View {
-    let award: AwardsViewData.Award
-    @State private var scale: CGFloat = 1
-
-    var body: some View {
-        VStack {
-            Image(award.image)
-                .scaleEffect(scale)
-
-            Text("\(award.title)")
-                .bold()
-                .foregroundColor(.white)
-
-            Text("\(award.detail)")
-                .foregroundColor(.white)
-
-            Text("\(award.achieved)")
-                .padding(5)
-                .background(Color.gray)
-                .clipShape(Circle())
-                .font(.caption)
-                .foregroundColor(.black)
-        }
-        .frame(maxWidth: .infinity, maxHeight: 200)
-        .onTapGesture(perform: onTapGesture)
-        .padding(.horizontal)
-        .padding()
-        .background(Color.white.opacity(0.3))
-        .shadow(radius: 20)
-        .cornerRadius(8)
-    }
-
-    private func onTapGesture() {
-        withAnimation(Animation.easeOut(duration: 0.25)) {
-            scale += scale * 0.20
-        }
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            withAnimation(Animation.easeIn(duration: 0.2)) {
-                scale = 1
-            }
-        }
-    }
 }
 
 struct AwardsView_Previews: PreviewProvider {
@@ -140,7 +117,7 @@ struct AwardsView_Previews: PreviewProvider {
             super.init()
 
             viewData = .init(
-                points: 0,
+                points: 100,
                 shouldDisplayHelpButton: true,
                 awards:
                     [
