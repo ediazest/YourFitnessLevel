@@ -11,8 +11,8 @@ import SwiftUI
 struct ChartView: View {
     @StateObject var state: ChartViewState
 
-    init(samples: [Sample]) {
-        _state = StateObject(wrappedValue: ChartViewState(samples: samples))
+    init(state: ChartViewState) {
+        _state = StateObject(wrappedValue: state)
     }
 
     var body: some View {

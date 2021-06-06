@@ -42,6 +42,6 @@ class CalendarMock: CalendarProtocol {
     var startOfDay: Date?
     func startOfDay(for date: Date) -> Date {
         calls.append(.startOfDay(date))
-        return startOfDay ?? returnedDate!
+        return startOfDay ?? returnedDate ?? currentDate
     }
 }

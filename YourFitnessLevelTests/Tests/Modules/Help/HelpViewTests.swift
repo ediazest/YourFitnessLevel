@@ -10,11 +10,22 @@ import XCTest
 @testable import YourFitnessLevel
 
 class HelpViewTests: XCTestCase {
+    override func setUp() {
+        super.setUp()
+        createTestDependencies(
+            GoalsUseCaseMock()
+        )
+    }
+
+    override func tearDown() {
+        removeTestDependencies()
+        super.tearDown()
+    }
+
     func test_helpView() {
         let view = HelpView(state: HelpViewStateMock())
 
         assertSnapshots(matching: view)
-
     }
 }
 

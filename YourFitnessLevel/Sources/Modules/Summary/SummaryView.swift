@@ -125,6 +125,12 @@ struct SummaryView_Previews: PreviewProvider {
 
             SummaryView(state: SummaryViewStatePreview(contentType: .data(categories)))
                 .previewDisplayName("List state")
+
+            SummaryView(state: SummaryViewStatePreview(
+                contentType: .empty,
+                requestedBefore: true
+            ))
+            .previewDisplayName("List state - no results")
         }
     }
 

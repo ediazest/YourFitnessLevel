@@ -1,6 +1,6 @@
 //
 //  AwardsViewTests.swift
-//  YourFitnessLevelTests   
+//  YourFitnessLevelTests
 //
 //  Created by Eduardo Díaz Estrada on 06.06.21.
 //
@@ -10,6 +10,22 @@ import XCTest
 @testable import YourFitnessLevel
 
 class AwardsViewTests: XCTestCase {
+    private let mockActivityUseCase = ActivityUseCaseMock()
+    private let mockGoalsUseCase = GoalsUseCaseMock()
+
+    override func setUp() {
+        super.setUp()
+        createTestDependencies(
+            mockActivityUseCase,
+            mockGoalsUseCase
+        )
+    }
+
+    override func tearDown() {
+        removeTestDependencies()
+        super.tearDown()
+    }
+
     func test_awardsView() {
         let view = AwardsView(state: AwardsViewStateMock())
 

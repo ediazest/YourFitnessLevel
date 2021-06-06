@@ -61,6 +61,9 @@
 		DC988D2A266CDC510073DF87 /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D29266CDC510073DF87 /* ContentViewTests.swift */; };
 		DC988D2D266CDC750073DF87 /* SummaryViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D2C266CDC750073DF87 /* SummaryViewTests.swift */; };
 		DC988D2F266CDCA50073DF87 /* SummaryViewStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D2E266CDCA50073DF87 /* SummaryViewStateTests.swift */; };
+		DC988D31266D19290073DF87 /* CategoryViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D30266D19290073DF87 /* CategoryViewTests.swift */; };
+		DC988D33266D1CA20073DF87 /* DateFormatterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D32266D1CA20073DF87 /* DateFormatterMock.swift */; };
+		DC988D35266D1FC90073DF87 /* ChartViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D34266D1FC90073DF87 /* ChartViewTests.swift */; };
 		DC9BBAF726699846007E7503 /* GoalsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BBAF626699846007E7503 /* GoalsUseCase.swift */; };
 		DCA67DD0266B81A200308764 /* HealthDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DCF266B81A200308764 /* HealthDataRepository.swift */; };
 		DCA67DD2266B821000308764 /* HealthStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DD1266B821000308764 /* HealthStoreProtocol.swift */; };
@@ -161,6 +164,9 @@
 		DC988D29266CDC510073DF87 /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
 		DC988D2C266CDC750073DF87 /* SummaryViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewTests.swift; sourceTree = "<group>"; };
 		DC988D2E266CDCA50073DF87 /* SummaryViewStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewStateTests.swift; sourceTree = "<group>"; };
+		DC988D30266D19290073DF87 /* CategoryViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryViewTests.swift; sourceTree = "<group>"; };
+		DC988D32266D1CA20073DF87 /* DateFormatterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterMock.swift; sourceTree = "<group>"; };
+		DC988D34266D1FC90073DF87 /* ChartViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewTests.swift; sourceTree = "<group>"; };
 		DC9BBAF626699846007E7503 /* GoalsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsUseCase.swift; sourceTree = "<group>"; };
 		DCA67DCF266B81A200308764 /* HealthDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataRepository.swift; sourceTree = "<group>"; };
 		DCA67DD1266B821000308764 /* HealthStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreProtocol.swift; sourceTree = "<group>"; };
@@ -358,6 +364,7 @@
 				DC67B87D2669738B00BCA8BF /* HttpClientMock.swift */,
 				DC67B87F2669799000BCA8BF /* MockError.swift */,
 				DC67B88A2669825500BCA8BF /* UserDefaultStorageMock.swift */,
+				DC988D32266D1CA20073DF87 /* DateFormatterMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -614,8 +621,10 @@
 		DC988D2B266CDC680073DF87 /* Summary */ = {
 			isa = PBXGroup;
 			children = (
+				DC988D30266D19290073DF87 /* CategoryViewTests.swift */,
 				DC988D2E266CDCA50073DF87 /* SummaryViewStateTests.swift */,
 				DC988D2C266CDC750073DF87 /* SummaryViewTests.swift */,
+				DC988D34266D1FC90073DF87 /* ChartViewTests.swift */,
 			);
 			path = Summary;
 			sourceTree = "<group>";
@@ -890,9 +899,11 @@
 				DCCCF38B266C3DC800954B4F /* GoalsServiceMock.swift in Sources */,
 				DCCCF38D266C3F3200954B4F /* Publisher.swift in Sources */,
 				DC67B87E2669738B00BCA8BF /* HttpClientMock.swift in Sources */,
+				DC988D31266D19290073DF87 /* CategoryViewTests.swift in Sources */,
 				DC12FD3F266813FE00602376 /* AppContainerTests.swift in Sources */,
 				DC67B882266979FE00BCA8BF /* Subscribers.swift in Sources */,
 				DC988D26266CD9D70073DF87 /* XCTestCase.swift in Sources */,
+				DC988D33266D1CA20073DF87 /* DateFormatterMock.swift in Sources */,
 				DCCCF3A1266C5E9200954B4F /* GoalsUseCaseMock.swift in Sources */,
 				DC67B88926697C0700BCA8BF /* GoalResponse.swift in Sources */,
 				DCCCF395266C4E1000954B4F /* CalendarMock.swift in Sources */,
@@ -903,6 +914,7 @@
 				DC67B88F266985BA00BCA8BF /* GoalsRepositoryTests.swift in Sources */,
 				DC988D2F266CDCA50073DF87 /* SummaryViewStateTests.swift in Sources */,
 				DC988D2A266CDC510073DF87 /* ContentViewTests.swift in Sources */,
+				DC988D35266D1FC90073DF87 /* ChartViewTests.swift in Sources */,
 				DCCCF399266C4FEE00954B4F /* GoalsUseCaseTests.swift in Sources */,
 				DCCCF3A6266C618700954B4F /* ContentViewStateTests.swift in Sources */,
 				DC988D28266CDC1F0073DF87 /* AwardsViewTests.swift in Sources */,

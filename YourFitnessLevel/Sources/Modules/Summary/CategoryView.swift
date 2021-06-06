@@ -26,7 +26,11 @@ struct CategoryView: View {
             actionableButton.padding(.padding)
 
             if displayChart {
-                ChartView(samples: category.samples)
+                ChartView(
+                    state: ChartViewState(
+                        samples: category.samples
+                    )
+                )
             }
         }
         .padding(.vertical)
@@ -39,9 +43,9 @@ struct CategoryView: View {
         HStack {
             Text("\(category.currentProgress)")
             Text(category.unit)
-            if let nextGoal = category.nextGoal {
+            if category.nextGoal > 0 {
                 Spacer()
-                Text("\(nextGoal) \(category.unit)")
+                Text("\(category.nextGoal) \(category.unit)")
                     .foregroundColor(.blackOff)
             }
         }
@@ -55,7 +59,7 @@ struct CategoryView: View {
             .overlay(GeometryReader { reader in
                 Rectangle()
                     .foregroundColor(.redCalories)
-                    .frame(width: CGFloat(category.currentProgress) / CGFloat(category.nextGoal) * reader.size.width)
+                    .frame(width: category.progressBarWidth(for: reader.size.width))
             })
             .clipShape(RoundedRectangle(cornerSize: .init(width: 10, height: 10)))
     }
@@ -69,6 +73,20 @@ struct CategoryView: View {
                     .animation(nil)
             }
         )
+    }
+}
+
+private extension Category {
+    func progressBarWidth(for maxWidth: CGFloat) -> CGFloat {
+        guard nextGoal > 0 else {
+            return currentProgress > 0 ? maxWidth : 0
+        }
+
+        guard currentProgress < nextGoal else {
+            return maxWidth
+        }
+
+        return CGFloat(currentProgress / nextGoal) * maxWidth
     }
 }
 

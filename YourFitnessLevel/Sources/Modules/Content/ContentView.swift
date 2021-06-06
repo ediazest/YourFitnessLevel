@@ -8,9 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var state = ContentViewState()
+    @StateObject var state: ContentViewState
 
-    init() {
+    init(state: ContentViewState = ContentViewState()) {
+        _state = StateObject(wrappedValue: state)
         UITabBar.appearance().barTintColor = UIColor.black
     }
 
