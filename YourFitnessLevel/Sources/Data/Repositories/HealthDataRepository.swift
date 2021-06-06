@@ -115,7 +115,11 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
                             count: Int($0.sumQuantity()?.doubleValue(for: type == .steps ? .count() : .meter()) ?? 0)
                         )
                     }
-                promise(.success(.running(steps)))
+                promise(
+                    .success(
+                        type == .steps ? .steps(steps) : .running(steps)
+                    )
+                )
             }
 
             healthStore.execute(query)
