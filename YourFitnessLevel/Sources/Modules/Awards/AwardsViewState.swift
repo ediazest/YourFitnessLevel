@@ -44,7 +44,7 @@ class AwardsViewState: ObservableObject {
         let awards = goals
             .map { goal -> AwardsViewData.Award in
                 .init(
-                    id: UUID().uuidString,
+                    id: goal.identifier,
                     image: goal.reward.trophy.image,
                     title: goal.title,
                     detail: goal.reward.trophy.title,
@@ -73,7 +73,11 @@ class AwardsViewState: ObservableObject {
                 }
             guard !steps.isEmpty else { return 0 }
 
-            return steps.sum > goal.goal ? goal.reward.points : 0
+            return steps.map { $0.count }
+                .filter { $0 > goal.goal }
+                .map { _ in goal.reward.points }
+                .reduce(0, +)
+
         } else {
             return 0
         }
@@ -90,7 +94,10 @@ class AwardsViewState: ObservableObject {
                 }
             guard !steps.isEmpty else { return 0 }
 
-            return steps.sum > goal.goal ? 1 : 0
+            return steps.map { $0.count }
+                .filter { $0 > goal.goal }
+                .map { _ in 1 }
+                .reduce(0, +)
         } else {
             return 0
         }
@@ -118,20 +125,5 @@ struct AwardsViewData: Equatable {
         let title: String
         let detail: String
         let achieved: Int
-    }
-}
-
-private extension Trophy {
-    var title: String {
-        switch self {
-        case .bronze:
-            return "Bronze"
-        case .silver:
-            return "Silver"
-        case .gold:
-            return "Gold"
-        case .zombie:
-            return "Zombie"
-        }
     }
 }

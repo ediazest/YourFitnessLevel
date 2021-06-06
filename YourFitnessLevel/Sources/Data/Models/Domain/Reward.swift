@@ -30,4 +30,17 @@ enum Trophy: String {
             return "zombieHand"
         }
     }
+
+    var title: String {
+        switch self {
+        case .bronze:
+            return "Bronze"
+        case .silver:
+            return "Silver"
+        case .gold:
+            return "Gold"
+        case .zombie:
+            return "Zombie"
+        }
+    }
 }
