@@ -8,17 +8,22 @@
 import Foundation
 
 enum Activity: Equatable {
-    case steps([Step])
+    case steps([Value])
     case walking
-    case running
+    case running([Value])
 
     var isSteps: Bool {
         guard case .steps = self else { return false }
         return true
     }
+
+    var isRunning: Bool {
+        guard case .running = self else { return false }
+        return true
+    }
 }
 
-struct Step: Equatable {
+struct Value: Equatable {
     let date: Date
     let count: Int
 }

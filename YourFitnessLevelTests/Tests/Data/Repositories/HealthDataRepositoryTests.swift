@@ -79,6 +79,7 @@ class HealthDataRepositoryTests: XCTestCase {
             [],
             [
                 HKObjectType.quantityType(forIdentifier: .stepCount)!,
+                HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
                 HKObjectType.workoutType()
             ]
         )])
@@ -117,6 +118,7 @@ class HealthDataRepositoryTests: XCTestCase {
             [],
             [
                 HKObjectType.quantityType(forIdentifier: .stepCount)!,
+                HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
                 HKObjectType.workoutType()
             ]
         )])
@@ -165,6 +167,7 @@ class HealthDataRepositoryTests: XCTestCase {
             [],
             [
                 HKObjectType.quantityType(forIdentifier: .stepCount)!,
+                HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
                 HKObjectType.workoutType()
             ]
         )])
@@ -228,6 +231,7 @@ class HealthDataRepositoryTests: XCTestCase {
             .requestAuthorization(
                 [], [
                     HKObjectType.quantityType(forIdentifier: .stepCount)!,
+                    HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)!,
                     HKObjectType.workoutType()
                 ]
             ),

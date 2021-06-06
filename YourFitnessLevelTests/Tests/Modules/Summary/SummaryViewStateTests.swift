@@ -84,42 +84,53 @@ class SummaryViewStateTests: XCTestCase {
 
     func test_presentsUserActivities_goalNotAchieved() {
 
-        let registeredSteps: [Step] = [
+        let registeredSteps: [Value] = [
             .init(date: Date(), count: 100),
             .init(date: Date(), count: 100),
             .init(date: Date(), count: 100),
             .init(date: Date(), count: 100)
-
         ]
 
-        let expectedCategories: YourFitnessLevel.Category =
-            .init(
-                achievedDailyGoals: false,
-                currentProgress: 400,
-                message: "You still need 400 steps for the next award",
-                nextGoal: 800,
-                unit: "steps",
-                title: "Daily steps",
-                samples: registeredSteps.map { .init(date: $0.date, value: Double($0.count)) }
-            )
+        let expectedCategories: [YourFitnessLevel.Category] =
+            [
+                .init(
+                    achievedDailyGoals: false,
+                    currentProgress: 400,
+                    message: "You still need 400 steps for the next award",
+                    nextGoal: 800,
+                    unit: "steps",
+                    title: "Daily steps",
+                    samples: registeredSteps.map { .init(date: $0.date, value: Double($0.count)) }
+                ),
+                .init(
+                    achievedDailyGoals: true,
+                    currentProgress: 400,
+                    message: "Great job! You already reached your daily goals!🤩",
+                    nextGoal: 0,
+                    unit: "meters",
+                    title: "Daily walking distance",
+                    samples: registeredSteps.map { .init(date: $0.date, value: Double($0.count)) }
+                )
+            ]
 
         sut.handleRequestAccessToData()
 
         mockGoalsUseCase.goalsSubject.send([.fake(type: .step, goal: 800)])
         mockActivityUseCase.activitiesSubject.send([
-            .steps(registeredSteps)
+            .steps(registeredSteps),
+            .running(registeredSteps)
         ])
 
         XCTAssertEqual(mockActivityUseCase.calls, [.fetch])
         XCTAssertEqual(sut.viewData, .init(date: currentDate,
-                                           contentType: .data([expectedCategories]),
+                                           contentType: .data(expectedCategories),
                                            requestedBefore: true)
         )
     }
 
     func test_presentsUserActivities_goalAchieved() {
 
-        let registeredSteps: [Step] = [
+        let registeredSteps: [Value] = [
             .init(date: Date(), count: 100),
             .init(date: Date(), count: 100),
             .init(date: Date(), count: 100),
@@ -127,16 +138,27 @@ class SummaryViewStateTests: XCTestCase {
 
         ]
 
-        let expectedCategories: YourFitnessLevel.Category =
-            .init(
-                achievedDailyGoals: true,
-                currentProgress: 400,
-                message: "Great job! You already reached your daily goals!🤩",
-                nextGoal: 0,
-                unit: "steps",
-                title: "Daily steps",
-                samples: registeredSteps.map { .init(date: $0.date, value: Double($0.count)) }
-            )
+        let expectedCategories: [YourFitnessLevel.Category] =
+            [
+                .init(
+                    achievedDailyGoals: true,
+                    currentProgress: 400,
+                    message: "Great job! You already reached your daily goals!🤩",
+                    nextGoal: 0,
+                    unit: "steps",
+                    title: "Daily steps",
+                    samples: registeredSteps.map { .init(date: $0.date, value: Double($0.count)) }
+                ),
+                .init(
+                    achievedDailyGoals: false,
+                    currentProgress: 0,
+                    message: "Great job! You already reached your daily goals!🤩",
+                    nextGoal: 0,
+                    unit: "meters",
+                    title: "Daily walking distance",
+                    samples: []
+                )
+            ]
 
         sut.handleRequestAccessToData()
 
@@ -147,7 +169,7 @@ class SummaryViewStateTests: XCTestCase {
 
         XCTAssertEqual(mockActivityUseCase.calls, [.fetch])
         XCTAssertEqual(sut.viewData, .init(date: currentDate,
-                                           contentType: .data([expectedCategories]),
+                                           contentType: .data(expectedCategories),
                                            requestedBefore: true)
         )
     }

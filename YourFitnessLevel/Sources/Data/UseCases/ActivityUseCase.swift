@@ -10,8 +10,8 @@ import CombineSchedulers
 import Foundation
 
 protocol ActivityUseCaseProtocol {
-    var activities: AnyPublisher<[Activity], Never> { get }
-    var runningMonthSteps: AnyPublisher<Activity?, Never> { get }
+    var todaysActivities: AnyPublisher<[Activity], Never> { get }
+    var runningMonthActivities: AnyPublisher<[Activity], Never> { get }
 
     func fetch()
 }
@@ -21,10 +21,10 @@ class ActivityUseCase: ActivityUseCaseProtocol {
     @Injected private var calendar: CalendarProtocol
 
     private let activitiesSubject = CurrentValueSubject<[Activity], Never>([])
-    lazy var activities: AnyPublisher<[Activity], Never> = activitiesSubject.eraseToAnyPublisher()
+    lazy var todaysActivities: AnyPublisher<[Activity], Never> = activitiesSubject.eraseToAnyPublisher()
 
-    private let runningMonthStepsSubject = CurrentValueSubject<Activity?, Never>(nil)
-    lazy var runningMonthSteps: AnyPublisher<Activity?, Never> = runningMonthStepsSubject
+    private let runningMonthStepsSubject = CurrentValueSubject<[Activity], Never>([])
+    lazy var runningMonthActivities: AnyPublisher<[Activity], Never> = runningMonthStepsSubject
         .eraseToAnyPublisher()
 
     private let scheduler: AnySchedulerOf<DispatchQueue>
@@ -40,14 +40,23 @@ class ActivityUseCase: ActivityUseCaseProtocol {
     }
 
     private func fetchTodaysSteps() {
-        healthDataRepository.fetchActivityData(
-            startDate: calendar.startOfDay(for: calendar.currentDate),
-            endDate: calendar.currentDate,
-            intervalInMinutes: .twicePerHour,
-            type: .steps
+        Publishers.CombineLatest(
+            healthDataRepository.fetchActivityData(
+                startDate: calendar.startOfDay(for: calendar.currentDate),
+                endDate: calendar.currentDate,
+                intervalInMinutes: .twicePerHour,
+                type: .steps
+            ),
+
+            healthDataRepository.fetchActivityData(
+                startDate: calendar.startOfDay(for: calendar.currentDate),
+                endDate: calendar.currentDate,
+                intervalInMinutes: .twicePerHour,
+                type: .running
+            )
         )
         .handleEvents(receiveOutput: {[activitiesSubject] in
-            activitiesSubject.send([$0])
+            activitiesSubject.send([$0.0, $0.1])
         })
         .subscribe()
         .store(in: &subscriptions)
@@ -59,14 +68,22 @@ class ActivityUseCase: ActivityUseCaseProtocol {
         sameMonthComponents.hour = 0
         sameMonthComponents.minute = 0
 
-        healthDataRepository.fetchActivityData(
-            startDate: calendar.date(from: sameMonthComponents) ?? calendar.currentDate,
-            endDate: calendar.currentDate,
-            intervalInMinutes: .oncePerDay,
-            type: .steps
+        Publishers.CombineLatest(
+            healthDataRepository.fetchActivityData(
+                startDate: calendar.date(from: sameMonthComponents) ?? calendar.currentDate,
+                endDate: calendar.currentDate,
+                intervalInMinutes: .oncePerDay,
+                type: .steps
+            ),
+            healthDataRepository.fetchActivityData(
+                startDate: calendar.date(from: sameMonthComponents) ?? calendar.currentDate,
+                endDate: calendar.currentDate,
+                intervalInMinutes: .oncePerDay,
+                type: .running
+            )
         )
         .handleEvents(receiveOutput: {[runningMonthStepsSubject] in
-            runningMonthStepsSubject.send($0)
+            runningMonthStepsSubject.send([$0.0, $0.1])
         })
         .subscribe()
         .store(in: &subscriptions)

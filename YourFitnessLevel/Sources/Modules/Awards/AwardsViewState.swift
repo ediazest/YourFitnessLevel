@@ -30,7 +30,7 @@ class AwardsViewState: ObservableObject {
 
     private func configureSubscriptions() {
         Publishers.CombineLatest(
-            activityUseCase.runningMonthSteps,
+            activityUseCase.runningMonthActivities,
             goalsUseCase.goals
         )
         .receive(on: scheduler)
@@ -40,7 +40,7 @@ class AwardsViewState: ObservableObject {
         .store(in: &subscriptions)
     }
 
-    private func handleReceivedData(activity: Activity?, goals: [Goal]) {
+    private func handleReceivedData(activities: [Activity], goals: [Goal]) {
         let awards = goals
             .map { goal -> AwardsViewData.Award in
                 .init(
@@ -48,11 +48,11 @@ class AwardsViewState: ObservableObject {
                     image: goal.reward.trophy.image,
                     title: goal.title,
                     detail: goal.reward.trophy.title,
-                    achieved: calculateUserTrophies(goal: goal, activities: [activity]))
+                    achieved: calculateUserTrophies(goal: goal, activities: activities))
             }
 
         let points = goals
-            .map { calculateUserPoints(goal: $0, activities: [activity]) }
+            .map { calculateUserPoints(goal: $0, activities: activities) }
             .reduce(0, +)
 
         viewData = .init(
@@ -62,45 +62,26 @@ class AwardsViewState: ObservableObject {
         )
     }
 
-    private func calculateUserPoints(goal: Goal, activities: [Activity?]) -> Int {
-        if goal.type == .step {
-            let steps = activities
-                .compactMap { $0 }
-                .filter { $0.isSteps }
-                .flatMap { activity -> [Step] in
-                    if case let .steps(steps) = activity { return steps }
-                    return []
-                }
-            guard !steps.isEmpty else { return 0 }
+    private func calculateUserPoints(goal: Goal, activities: [Activity]) -> Int {
+        let steps = goal.type == .step ? activities.steps : activities.distance
 
-            return steps.map { $0.count }
-                .filter { $0 > goal.goal }
-                .map { _ in goal.reward.points }
-                .reduce(0, +)
+        guard !steps.isEmpty else { return 0 }
 
-        } else {
-            return 0
-        }
+        return steps.map { $0.count }
+            .filter { $0 > goal.goal }
+            .map { _ in goal.reward.points }
+            .reduce(0, +)
     }
 
-    private func calculateUserTrophies(goal: Goal, activities: [Activity?]) -> Int {
-        if goal.type == .step {
-            let steps = activities
-                .compactMap { $0 }
-                .filter { $0.isSteps }
-                .flatMap { activity -> [Step] in
-                    if case let .steps(steps) = activity { return steps }
-                    return []
-                }
-            guard !steps.isEmpty else { return 0 }
+    private func calculateUserTrophies(goal: Goal, activities: [Activity]) -> Int {
+        let steps = goal.type == .step ? activities.steps : activities.distance
 
-            return steps.map { $0.count }
-                .filter { $0 > goal.goal }
-                .map { _ in 1 }
-                .reduce(0, +)
-        } else {
-            return 0
-        }
+        guard !steps.isEmpty else { return 0 }
+
+        return steps.map { $0.count }
+            .filter { $0 > goal.goal }
+            .map { _ in 1 }
+            .reduce(0, +)
     }
 }
 

@@ -44,13 +44,13 @@ class ActivityUseCaseTests: XCTestCase {
         mockCalendar.returnedDate = dateFromComponents
 
         var currentDaySteps: [Activity]?
-        var currentMonthSteps: Activity?
+        var currentMonthSteps: [Activity]?
 
-        sut.activities.sink {
+        sut.todaysActivities.sink {
             currentDaySteps = $0
         }.store(in: &subscriptions)
 
-        sut.runningMonthSteps.sink {
+        sut.runningMonthActivities.sink {
             currentMonthSteps = $0
         }.store(in: &subscriptions)
 
@@ -60,17 +60,21 @@ class ActivityUseCaseTests: XCTestCase {
 
         XCTAssertEqual(mockHealthDataRepository.calls, [
             .fetch(startOfDay, today, 30, .steps),
-            .fetch(dateFromComponents, today, 60 * 24, .steps)
+            .fetch(startOfDay, today, 30, .running),
+            .fetch(dateFromComponents, today, 60 * 24, .steps),
+            .fetch(dateFromComponents, today, 60 * 24, .running)
         ])
 
         XCTAssertEqual(mockCalendar.calls, [
             .startOfDay(today),
+            .startOfDay(today),
             .dateComponents([.month, .year], today),
+            .date(.init(year: 2021, month: 6, day: 1, hour: 0, minute: 0)),
             .date(.init(year: 2021, month: 6, day: 1, hour: 0, minute: 0))
         ])
 
         XCTAssertEqual(currentDaySteps, [])
-        XCTAssertNil(currentMonthSteps)
+        XCTAssertEqual(currentMonthSteps, [])
     }
 
     func test_forwardsValues_whenValidHealthData() {
@@ -85,7 +89,7 @@ class ActivityUseCaseTests: XCTestCase {
         mockCalendar.returnedDate = dateFromComponents
 
         var currentDaySteps: [Activity]?
-        var currentMonthSteps: Activity?
+        var currentMonthSteps: [Activity]?
 
         let expectedActivity: Activity = .steps([
             .init(date: today, count: 30),
@@ -93,11 +97,11 @@ class ActivityUseCaseTests: XCTestCase {
             .init(date: today, count: 255)
         ])
 
-        sut.activities.sink {
+        sut.todaysActivities.sink {
             currentDaySteps = $0
         }.store(in: &subscriptions)
 
-        sut.runningMonthSteps.sink {
+        sut.runningMonthActivities.sink {
             currentMonthSteps = $0
         }.store(in: &subscriptions)
 
@@ -107,16 +111,20 @@ class ActivityUseCaseTests: XCTestCase {
 
         XCTAssertEqual(mockHealthDataRepository.calls, [
             .fetch(startOfDay, today, 30, .steps),
-            .fetch(dateFromComponents, today, 60 * 24, .steps)
+            .fetch(startOfDay, today, 30, .running),
+            .fetch(dateFromComponents, today, 60 * 24, .steps),
+            .fetch(dateFromComponents, today, 60 * 24, .running)
         ])
 
         XCTAssertEqual(mockCalendar.calls, [
             .startOfDay(today),
+            .startOfDay(today),
             .dateComponents([.month, .year], today),
+            .date(.init(year: 2021, month: 6, day: 1, hour: 0, minute: 0)),
             .date(.init(year: 2021, month: 6, day: 1, hour: 0, minute: 0))
         ])
 
-        XCTAssertEqual(currentDaySteps, [expectedActivity])
-        XCTAssertEqual(currentMonthSteps, expectedActivity)
+        XCTAssertEqual(currentDaySteps, [expectedActivity, expectedActivity])
+        XCTAssertEqual(currentMonthSteps, [expectedActivity, expectedActivity])
     }
 }

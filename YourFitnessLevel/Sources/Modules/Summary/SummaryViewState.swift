@@ -42,7 +42,7 @@ class SummaryViewState: ObservableObject {
 
     func handleRequestAccessToData() {
         Publishers.CombineLatest(
-            activityUseCase.activities,
+            activityUseCase.todaysActivities,
             goalsUseCase.goals
         )
         .receive(on: scheduler)
@@ -66,21 +66,15 @@ class SummaryViewState: ObservableObject {
         viewData = viewData.updated(
             contentType: .data(
                 [
-                    generateStepsData(activities, goals: goals)
+                    generateCategoryData(for: .step, activities.steps, goals.steps),
+                    generateCategoryData(for: .running, activities.distance, goals.distance)
                 ]
             ),
             requestedBefore: true
         )
     }
 
-    private func generateStepsData(_ activities: [Activity], goals: [Goal]) -> Category {
-        let steps = activities
-            .filter { $0.isSteps }
-            .flatMap { activity -> [Step] in
-                if case let .steps(steps) = activity { return steps }
-                return []
-            }
-
+    private func generateCategoryData(for goalType: GoalType, _ steps: [Value], _ goals: [Goal]) -> Category {
         let currentProgress = steps.sum
         let nextGoal = goals
             .map { $0.goal }
@@ -93,8 +87,8 @@ class SummaryViewState: ObservableObject {
             currentProgress: currentProgress,
             message: message(currentProgress: currentProgress, nextGoal: nextGoal),
             nextGoal: nextGoal,
-            unit: "steps",
-            title: "Daily steps",
+            unit: goalType == .step ? "steps" : "meters",
+            title: goalType == .step ? "Daily steps" : "Daily walking distance",
             samples: steps.map { .init(date: $0.date, value: Double($0.count)) }
         )
     }

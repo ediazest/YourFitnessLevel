@@ -9,6 +9,7 @@ import Combine
 @testable import YourFitnessLevel
 
 class ActivityUseCaseMock: ActivityUseCaseProtocol {
+
     enum Call: Equatable {
         case fetch
     }
@@ -16,10 +17,10 @@ class ActivityUseCaseMock: ActivityUseCaseProtocol {
     var calls: [Call] = []
 
     let activitiesSubject = PassthroughSubject<[Activity], Never>()
-    lazy var activities: AnyPublisher<[Activity], Never> = activitiesSubject.testable
+    lazy var todaysActivities: AnyPublisher<[Activity], Never> = activitiesSubject.testable
 
-    let runningMonthStepsSubject = PassthroughSubject<Activity?, Never>()
-    lazy var runningMonthSteps: AnyPublisher<Activity?, Never> = runningMonthStepsSubject.testable
+    let runningMonthStepsSubject = PassthroughSubject<[Activity], Never>()
+    lazy var runningMonthActivities: AnyPublisher<[Activity], Never> = runningMonthStepsSubject.testable
 
     func fetch() {
         calls.append(.fetch)

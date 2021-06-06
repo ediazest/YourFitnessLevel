@@ -37,18 +37,25 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
         type: ActivityTypeRequest
     ) -> AnyPublisher<Activity, Error> {
         requestHealthKitPermission()
-            .flatMap { [readSteps] result -> AnyPublisher<Activity, Error> in
-                guard result else {
+            .flatMap { [readUserActivity] result -> AnyPublisher<Activity, Error> in
+                guard result, type != .walking else {
                     return Fail(error: HealthStoreError.permissionNotGranted).eraseToAnyPublisher()
                 }
-                return readSteps(startDate, endDate, intervalInMinutes).eraseToAnyPublisher()
+                return readUserActivity(
+                    type,
+                    startDate,
+                    endDate,
+                    intervalInMinutes)
+                    .eraseToAnyPublisher()
             }
             .eraseToAnyPublisher()
     }
 
     private func requestHealthKitPermission() -> AnyPublisher<Bool, Error> {
         DeferredFuture<Bool, Error> { [healthStore, storage] promise in
-            guard let stepCountRequest = HKObjectType.quantityType(forIdentifier: .stepCount) else {
+            guard let stepCountRequest = HKObjectType.quantityType(forIdentifier: .stepCount),
+                  let walkingRunningDistanceRequest = HKObjectType.quantityType(forIdentifier: .distanceWalkingRunning)
+                  else {
                 promise(.failure(HealthStoreError.noStepCount))
                 return
             }
@@ -56,7 +63,7 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
 
             healthStore.requestAuthorization(
                 toShare: [],
-                read: [stepCountRequest, workoutsRequest]) { success, error in
+                read: [stepCountRequest, workoutsRequest, walkingRunningDistanceRequest]) { success, error in
                 guard let error = error else {
                     promise(.success(success))
                     try? storage.set(value: true, key: .healthAccessRequested)
@@ -67,14 +74,16 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
         }.eraseToAnyPublisher()
     }
 
-    private func readSteps(startDate: Date, endDate: Date, intervalInMinutes: Int) -> AnyPublisher<Activity, Error> {
+    private func readUserActivity(type: ActivityTypeRequest, startDate: Date, endDate: Date, intervalInMinutes: Int) -> AnyPublisher<Activity, Error> {
         DeferredFuture<Activity, Error> { [healthStore, anchorDate, statisticsQueryFactory] promise in
             guard let anchorDate = anchorDate else {
                 promise(.failure(HealthStoreError.invalidDateTimeframe))
                 return
             }
 
-            guard let quantityType = HKObjectType.quantityType(forIdentifier: .stepCount) else {
+            let quantityTypeIdentifier: HKQuantityTypeIdentifier = type == .steps ? .stepCount : .distanceWalkingRunning
+
+            guard let quantityType = HKObjectType.quantityType(forIdentifier: quantityTypeIdentifier) else {
                 promise(.failure(HealthStoreError.invalidQuantityType))
                 return
             }
@@ -91,18 +100,22 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
                 intervalComponents: DateComponents(minute: intervalInMinutes)
             ) { _, results, _ in
                 guard let statsCollection = results else {
-                    promise(.success(.steps([])))
+                    promise(
+                        .success(
+                            type == .steps ? .steps([]) : .running([])
+                        )
+                    )
                     return
                 }
 
                 let steps = statsCollection.statistics()
                     .map {
-                        Step(
+                        Value(
                             date: $0.startDate,
-                            count: Int($0.sumQuantity()?.doubleValue(for: .count()) ?? 0)
+                            count: Int($0.sumQuantity()?.doubleValue(for: type == .steps ? .count() : .meter()) ?? 0)
                         )
                     }
-                promise(.success(.steps(steps)))
+                promise(.success(.running(steps)))
             }
 
             healthStore.execute(query)

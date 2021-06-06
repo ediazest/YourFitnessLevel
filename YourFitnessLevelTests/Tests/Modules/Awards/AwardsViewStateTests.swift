@@ -38,23 +38,21 @@ class AwardsViewStateTests: XCTestCase {
     }
 
     func test_hidesAwardInformation_whenNoGoalsAvailable() {
-        let activity: Activity? = nil
         let goals: [Goal] = []
 
-        mockActivityUseCase.runningMonthStepsSubject.send(activity)
+        mockActivityUseCase.runningMonthStepsSubject.send([])
         mockGoalsUseCase.goalsSubject.send(goals)
 
         XCTAssertEqual(sut.viewData, .init(points: 0, shouldDisplayHelpButton: false, awards: []))
     }
 
     func test_displaysAwardInformation_whenNoActivityAvailable() {
-        let activity: Activity? = nil
         let goals: [Goal] = [
             .fake(),
             .fake()
         ]
 
-        mockActivityUseCase.runningMonthStepsSubject.send(activity)
+        mockActivityUseCase.runningMonthStepsSubject.send([])
         mockGoalsUseCase.goalsSubject.send(goals)
 
         XCTAssertEqual(sut.viewData, .init(
@@ -78,7 +76,7 @@ class AwardsViewStateTests: XCTestCase {
     }
 
     func test_displaysAwardInformation_whenActivityAvailable_withPointCalculation() {
-        let activity: Activity? = .steps([
+        let activity: Activity = .steps([
             .init(date: Date(), count: 6000),
             .init(date: Date(), count: 2000)
         ])
@@ -87,7 +85,7 @@ class AwardsViewStateTests: XCTestCase {
             .fake(goal: 5000, points: 50)
         ]
 
-        mockActivityUseCase.runningMonthStepsSubject.send(activity)
+        mockActivityUseCase.runningMonthStepsSubject.send([activity])
         mockGoalsUseCase.goalsSubject.send(goals)
 
         XCTAssertEqual(sut.viewData, .init(
