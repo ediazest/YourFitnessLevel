@@ -29,8 +29,7 @@ class AwardsViewTests: XCTestCase {
     func test_awardsView() {
         let view = AwardsView(state: AwardsViewStateMock())
 
-        assertSnapshots(matching: view)
-
+        self.assertSnapshots(matching: view)
     }
 
     func test_awardsView_whenNoData() {
@@ -44,7 +43,7 @@ class AwardsViewTests: XCTestCase {
 private class AwardsViewStateMock: AwardsViewState {
 
     init(data: Bool = true) {
-        super.init()
+        super.init(scheduler: .immediate)
 
         if data {
             viewData = .init(

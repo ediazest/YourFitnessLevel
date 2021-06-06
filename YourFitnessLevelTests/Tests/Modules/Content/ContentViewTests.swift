@@ -15,7 +15,9 @@ class ContentViewTests: XCTestCase {
         createTestDependencies(
             DateFormatterMock(),
             CalendarMock(),
-            UserDefaultStorageMock()
+            UserDefaultStorageMock(),
+            ActivityUseCaseMock(),
+            GoalsUseCaseMock()
         )
     }
 
