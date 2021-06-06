@@ -65,6 +65,10 @@
 		DC988D33266D1CA20073DF87 /* DateFormatterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D32266D1CA20073DF87 /* DateFormatterMock.swift */; };
 		DC988D35266D1FC90073DF87 /* ChartViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D34266D1FC90073DF87 /* ChartViewTests.swift */; };
 		DC988D37266D33D70073DF87 /* MedalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D36266D33D70073DF87 /* MedalView.swift */; };
+		DC988D3A266D3BA80073DF87 /* StatisticsQueryFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D39266D3BA80073DF87 /* StatisticsQueryFactory.swift */; };
+		DC988D3C266D3DCA0073DF87 /* StatisticsQueryFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D3B266D3DCA0073DF87 /* StatisticsQueryFactoryMock.swift */; };
+		DC988D3E266D40690073DF87 /* HealthDataRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D3D266D40690073DF87 /* HealthDataRepositoryTests.swift */; };
+		DC988D40266D41020073DF87 /* HealthStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D3F266D41020073DF87 /* HealthStoreMock.swift */; };
 		DC9BBAF726699846007E7503 /* GoalsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BBAF626699846007E7503 /* GoalsUseCase.swift */; };
 		DCA67DD0266B81A200308764 /* HealthDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DCF266B81A200308764 /* HealthDataRepository.swift */; };
 		DCA67DD2266B821000308764 /* HealthStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DD1266B821000308764 /* HealthStoreProtocol.swift */; };
@@ -169,6 +173,10 @@
 		DC988D32266D1CA20073DF87 /* DateFormatterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterMock.swift; sourceTree = "<group>"; };
 		DC988D34266D1FC90073DF87 /* ChartViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewTests.swift; sourceTree = "<group>"; };
 		DC988D36266D33D70073DF87 /* MedalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedalView.swift; sourceTree = "<group>"; };
+		DC988D39266D3BA80073DF87 /* StatisticsQueryFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsQueryFactory.swift; sourceTree = "<group>"; };
+		DC988D3B266D3DCA0073DF87 /* StatisticsQueryFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsQueryFactoryMock.swift; sourceTree = "<group>"; };
+		DC988D3D266D40690073DF87 /* HealthDataRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataRepositoryTests.swift; sourceTree = "<group>"; };
+		DC988D3F266D41020073DF87 /* HealthStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreMock.swift; sourceTree = "<group>"; };
 		DC9BBAF626699846007E7503 /* GoalsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsUseCase.swift; sourceTree = "<group>"; };
 		DCA67DCF266B81A200308764 /* HealthDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataRepository.swift; sourceTree = "<group>"; };
 		DCA67DD1266B821000308764 /* HealthStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreProtocol.swift; sourceTree = "<group>"; };
@@ -357,6 +365,7 @@
 			children = (
 				DCCCF3A2266C5F0D00954B4F /* ActivityUseCaseMock.swift */,
 				DCCCF394266C4E1000954B4F /* CalendarMock.swift */,
+				DC988D32266D1CA20073DF87 /* DateFormatterMock.swift */,
 				DC12FD4626681F0C00602376 /* DependencyContainerMock.swift */,
 				DCCCF390266C4BA200954B4F /* GoalsRepositoryMock.swift */,
 				DC67B88C2669827D00BCA8BF /* GoalsResponseMapperMock.swift */,
@@ -365,8 +374,9 @@
 				DCCCF396266C4F2500954B4F /* HealthDataRepositoryMock.swift */,
 				DC67B87D2669738B00BCA8BF /* HttpClientMock.swift */,
 				DC67B87F2669799000BCA8BF /* MockError.swift */,
+				DC988D3B266D3DCA0073DF87 /* StatisticsQueryFactoryMock.swift */,
 				DC67B88A2669825500BCA8BF /* UserDefaultStorageMock.swift */,
-				DC988D32266D1CA20073DF87 /* DateFormatterMock.swift */,
+				DC988D3F266D41020073DF87 /* HealthStoreMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -465,6 +475,7 @@
 		DC12FD692669434D00602376 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				DC988D38266D3B680073DF87 /* Factories */,
 				DCA67DEB266BFA9300308764 /* CustomViews */,
 				DC67B89026698C3900BCA8BF /* Helpers */,
 				DC12FD6A2669435B00602376 /* Protocols */,
@@ -571,8 +582,9 @@
 		DC67B8782669730C00BCA8BF /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				DC67B88426697B9200BCA8BF /* Mappers */,
 				DC67B88E266985BA00BCA8BF /* GoalsRepositoryTests.swift */,
+				DC988D3D266D40690073DF87 /* HealthDataRepositoryTests.swift */,
+				DC67B88426697B9200BCA8BF /* Mappers */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -630,6 +642,14 @@
 				DC988D2C266CDC750073DF87 /* SummaryViewTests.swift */,
 			);
 			path = Summary;
+			sourceTree = "<group>";
+		};
+		DC988D38266D3B680073DF87 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				DC988D39266D3BA80073DF87 /* StatisticsQueryFactory.swift */,
+			);
+			path = Factories;
 			sourceTree = "<group>";
 		};
 		DCA67DD4266B89F000308764 /* Frameworks */ = {
@@ -885,6 +905,7 @@
 				DC12FD54266830A400602376 /* Category.swift in Sources */,
 				DC12FCFE2667F9C300602376 /* YourFitnessLevelApp.swift in Sources */,
 				DC12FD332668074400602376 /* Injected.swift in Sources */,
+				DC988D3A266D3BA80073DF87 /* StatisticsQueryFactory.swift in Sources */,
 				DC12FD68266942E800602376 /* UserDefaultStorage.swift in Sources */,
 				DC12FD3726680FDA00602376 /* Dependencies.swift in Sources */,
 				DC1926CD266AD97900873625 /* Array.swift in Sources */,
@@ -899,6 +920,7 @@
 				DC988D24266CD7D30073DF87 /* HelpViewTests.swift in Sources */,
 				DCCCF39F266C5E3400954B4F /* HelpViewStateTests.swift in Sources */,
 				DC67B8802669799000BCA8BF /* MockError.swift in Sources */,
+				DC988D3C266D3DCA0073DF87 /* StatisticsQueryFactoryMock.swift in Sources */,
 				DC67B88626697BA500BCA8BF /* GoalsResponseMapperTests.swift in Sources */,
 				DCCCF38B266C3DC800954B4F /* GoalsServiceMock.swift in Sources */,
 				DCCCF38D266C3F3200954B4F /* Publisher.swift in Sources */,
@@ -919,11 +941,13 @@
 				DC988D2F266CDCA50073DF87 /* SummaryViewStateTests.swift in Sources */,
 				DC988D2A266CDC510073DF87 /* ContentViewTests.swift in Sources */,
 				DC988D35266D1FC90073DF87 /* ChartViewTests.swift in Sources */,
+				DC988D40266D41020073DF87 /* HealthStoreMock.swift in Sources */,
 				DCCCF399266C4FEE00954B4F /* GoalsUseCaseTests.swift in Sources */,
 				DCCCF3A6266C618700954B4F /* ContentViewStateTests.swift in Sources */,
 				DC988D28266CDC1F0073DF87 /* AwardsViewTests.swift in Sources */,
 				DCCCF3A9266C638400954B4F /* AwardsViewStateTests.swift in Sources */,
 				DC12FD4A2668228600602376 /* TestDependencyContainer.swift in Sources */,
+				DC988D3E266D40690073DF87 /* HealthDataRepositoryTests.swift in Sources */,
 				DC67B88D2669827D00BCA8BF /* GoalsResponseMapperMock.swift in Sources */,
 				DC67B87C2669735C00BCA8BF /* GoalsServiceTests.swift in Sources */,
 				DCCCF3A3266C5F0D00954B4F /* ActivityUseCaseMock.swift in Sources */,

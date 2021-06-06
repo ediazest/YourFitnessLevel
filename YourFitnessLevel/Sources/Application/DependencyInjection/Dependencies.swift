@@ -10,7 +10,7 @@ import HealthKit
 
 func injectDependencies(into container: DependencyContainer) {
     injectUtilities(into: container)
-   injectServices(into: container)
+    injectServices(into: container)
     injectRepositories(into: container)
     injectUseCases(into: container)
 }
@@ -64,8 +64,13 @@ private func injectRepositories(into container: DependencyContainer) {
     }
 }
 
-// MARK: - Repositories
+// MARK: - Favorites & Utils
 private func injectUtilities(into container: DependencyContainer) {
+
+    container.register(with: .factory) { _ -> StatisticsQueryFactoryProtocol in
+        StatisticsQueryFactory()
+    }
+
     container.register(with: .factory) { _ -> JSONDecoderProtocol in
         JSONDecoder()
     }

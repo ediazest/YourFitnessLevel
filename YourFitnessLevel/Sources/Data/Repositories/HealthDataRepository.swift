@@ -24,6 +24,7 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
     @Injected private var calendar: CalendarProtocol
     @Injected private var healthStore: HealthStoreProtocol
     @Injected private var storage: UserDefaultStorageProtocol
+    @Injected private var statisticsQueryFactory: StatisticsQueryFactoryProtocol
 
     var isAvailable: Bool {
         healthStore.isHealthDataAvailable
@@ -66,9 +67,9 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
         }.eraseToAnyPublisher()
     }
 
-    private func readSteps(startDate: Date?, endDate: Date, intervalInMinutes: Int) -> AnyPublisher<Activity, Error> {
-        DeferredFuture<Activity, Error> { [healthStore, anchorDate] promise in
-            guard let anchorDate = anchorDate, let startDate = startDate else {
+    private func readSteps(startDate: Date, endDate: Date, intervalInMinutes: Int) -> AnyPublisher<Activity, Error> {
+        DeferredFuture<Activity, Error> { [healthStore, anchorDate, statisticsQueryFactory] promise in
+            guard let anchorDate = anchorDate else {
                 promise(.failure(HealthStoreError.invalidDateTimeframe))
                 return
             }
@@ -78,7 +79,7 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
                 return
             }
 
-            let query = HKStatisticsCollectionQuery(
+            let query = statisticsQueryFactory.collectionQuery(
                 quantityType: quantityType,
                 quantitySamplePredicate: HKQuery.predicateForSamples(
                     withStart: startDate,
@@ -88,9 +89,7 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
                 options: .cumulativeSum,
                 anchorDate: anchorDate,
                 intervalComponents: DateComponents(minute: intervalInMinutes)
-            )
-
-            query.initialResultsHandler = { query, results, error in
+            ) { _, results, _ in
                 guard let statsCollection = results else {
                     promise(.success(.steps([])))
                     return
@@ -117,14 +116,9 @@ class HealthDataRepository: HealthDataRepositoryProtocol {
         anchorComponents.day = 1
         return calendar.date(from: anchorComponents)
     }
-
-    private var currentRunningMonthDate: Date? {
-        let runningMonthComponents = calendar.dateComponents([.month, .year], from: calendar.currentDate)
-        return calendar.date(from: runningMonthComponents)
-    }
 }
 
-private enum HealthStoreError: Error {
+enum HealthStoreError: Error {
     case invalidDateTimeframe
     case invalidQuantityType
     case noStepCount
