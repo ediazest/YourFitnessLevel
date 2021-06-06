@@ -54,6 +54,13 @@
 		DC67B88D2669827D00BCA8BF /* GoalsResponseMapperMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B88C2669827D00BCA8BF /* GoalsResponseMapperMock.swift */; };
 		DC67B88F266985BA00BCA8BF /* GoalsRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B88E266985BA00BCA8BF /* GoalsRepositoryTests.swift */; };
 		DC67B89226698C4300BCA8BF /* DeferredFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC67B89126698C4300BCA8BF /* DeferredFuture.swift */; };
+		DC988D22266CD79D0073DF87 /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = DC988D21266CD79D0073DF87 /* SnapshotTesting */; };
+		DC988D24266CD7D30073DF87 /* HelpViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D23266CD7D30073DF87 /* HelpViewTests.swift */; };
+		DC988D26266CD9D70073DF87 /* XCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D25266CD9D70073DF87 /* XCTestCase.swift */; };
+		DC988D28266CDC1F0073DF87 /* AwardsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D27266CDC1F0073DF87 /* AwardsViewTests.swift */; };
+		DC988D2A266CDC510073DF87 /* ContentViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D29266CDC510073DF87 /* ContentViewTests.swift */; };
+		DC988D2D266CDC750073DF87 /* SummaryViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D2C266CDC750073DF87 /* SummaryViewTests.swift */; };
+		DC988D2F266CDCA50073DF87 /* SummaryViewStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC988D2E266CDCA50073DF87 /* SummaryViewStateTests.swift */; };
 		DC9BBAF726699846007E7503 /* GoalsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BBAF626699846007E7503 /* GoalsUseCase.swift */; };
 		DCA67DD0266B81A200308764 /* HealthDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DCF266B81A200308764 /* HealthDataRepository.swift */; };
 		DCA67DD2266B821000308764 /* HealthStoreProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCA67DD1266B821000308764 /* HealthStoreProtocol.swift */; };
@@ -148,6 +155,12 @@
 		DC67B88C2669827D00BCA8BF /* GoalsResponseMapperMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsResponseMapperMock.swift; sourceTree = "<group>"; };
 		DC67B88E266985BA00BCA8BF /* GoalsRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsRepositoryTests.swift; sourceTree = "<group>"; };
 		DC67B89126698C4300BCA8BF /* DeferredFuture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeferredFuture.swift; sourceTree = "<group>"; };
+		DC988D23266CD7D30073DF87 /* HelpViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewTests.swift; sourceTree = "<group>"; };
+		DC988D25266CD9D70073DF87 /* XCTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCase.swift; sourceTree = "<group>"; };
+		DC988D27266CDC1F0073DF87 /* AwardsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsViewTests.swift; sourceTree = "<group>"; };
+		DC988D29266CDC510073DF87 /* ContentViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewTests.swift; sourceTree = "<group>"; };
+		DC988D2C266CDC750073DF87 /* SummaryViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewTests.swift; sourceTree = "<group>"; };
+		DC988D2E266CDCA50073DF87 /* SummaryViewStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SummaryViewStateTests.swift; sourceTree = "<group>"; };
 		DC9BBAF626699846007E7503 /* GoalsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalsUseCase.swift; sourceTree = "<group>"; };
 		DCA67DCF266B81A200308764 /* HealthDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthDataRepository.swift; sourceTree = "<group>"; };
 		DCA67DD1266B821000308764 /* HealthStoreProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthStoreProtocol.swift; sourceTree = "<group>"; };
@@ -196,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC988D22266CD79D0073DF87 /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -294,9 +308,9 @@
 		DC12FD3A2668130600602376 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				DCCCF39C266C5DF700954B4F /* Modules */,
 				DC12FD3B2668131D00602376 /* Application */,
 				DC67B876266972FB00BCA8BF /* Data */,
+				DCCCF39C266C5DF700954B4F /* Modules */,
 				DC12FD4426681ECB00602376 /* TestUtils */,
 			);
 			path = Tests;
@@ -567,6 +581,7 @@
 			children = (
 				DC67B881266979FE00BCA8BF /* Subscribers.swift */,
 				DCCCF38C266C3F3200954B4F /* Publisher.swift */,
+				DC988D25266CD9D70073DF87 /* XCTestCase.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -594,6 +609,15 @@
 				DC67B89126698C4300BCA8BF /* DeferredFuture.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		DC988D2B266CDC680073DF87 /* Summary */ = {
+			isa = PBXGroup;
+			children = (
+				DC988D2E266CDCA50073DF87 /* SummaryViewStateTests.swift */,
+				DC988D2C266CDC750073DF87 /* SummaryViewTests.swift */,
+			);
+			path = Summary;
 			sourceTree = "<group>";
 		};
 		DCA67DD4266B89F000308764 /* Frameworks */ = {
@@ -637,6 +661,7 @@
 				DCCCF3A7266C632300954B4F /* Awards */,
 				DCCCF3A4266C617400954B4F /* Content */,
 				DCCCF39D266C5E2800954B4F /* Help */,
+				DC988D2B266CDC680073DF87 /* Summary */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -645,6 +670,7 @@
 			isa = PBXGroup;
 			children = (
 				DCCCF39E266C5E3400954B4F /* HelpViewStateTests.swift */,
+				DC988D23266CD7D30073DF87 /* HelpViewTests.swift */,
 			);
 			path = Help;
 			sourceTree = "<group>";
@@ -653,6 +679,7 @@
 			isa = PBXGroup;
 			children = (
 				DCCCF3A5266C618700954B4F /* ContentViewStateTests.swift */,
+				DC988D29266CDC510073DF87 /* ContentViewTests.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -661,6 +688,7 @@
 			isa = PBXGroup;
 			children = (
 				DCCCF3A8266C638400954B4F /* AwardsViewStateTests.swift */,
+				DC988D27266CDC1F0073DF87 /* AwardsViewTests.swift */,
 			);
 			path = Awards;
 			sourceTree = "<group>";
@@ -704,6 +732,9 @@
 				DC12FD0D2667F9C500602376 /* PBXTargetDependency */,
 			);
 			name = YourFitnessLevelTests;
+			packageProductDependencies = (
+				DC988D21266CD79D0073DF87 /* SnapshotTesting */,
+			);
 			productName = YourFitnessLevelTests;
 			productReference = DC12FD0B2667F9C500602376 /* YourFitnessLevelTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -740,6 +771,7 @@
 				DC12FD2E2668046000602376 /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				DC1926D5266B024C00873625 /* XCRemoteSwiftPackageReference "combine-schedulers" */,
 				DCA67DE8266BFA8200308764 /* XCRemoteSwiftPackageReference "lottie-ios" */,
+				DC988D20266CD79D0073DF87 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
 			);
 			productRefGroup = DC12FCFB2667F9C300602376 /* Products */;
 			projectDirPath = "";
@@ -851,6 +883,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCCCF393266C4DD800954B4F /* ActivityUseCaseTests.swift in Sources */,
+				DC988D24266CD7D30073DF87 /* HelpViewTests.swift in Sources */,
 				DCCCF39F266C5E3400954B4F /* HelpViewStateTests.swift in Sources */,
 				DC67B8802669799000BCA8BF /* MockError.swift in Sources */,
 				DC67B88626697BA500BCA8BF /* GoalsResponseMapperTests.swift in Sources */,
@@ -859,15 +892,20 @@
 				DC67B87E2669738B00BCA8BF /* HttpClientMock.swift in Sources */,
 				DC12FD3F266813FE00602376 /* AppContainerTests.swift in Sources */,
 				DC67B882266979FE00BCA8BF /* Subscribers.swift in Sources */,
+				DC988D26266CD9D70073DF87 /* XCTestCase.swift in Sources */,
 				DCCCF3A1266C5E9200954B4F /* GoalsUseCaseMock.swift in Sources */,
 				DC67B88926697C0700BCA8BF /* GoalResponse.swift in Sources */,
 				DCCCF395266C4E1000954B4F /* CalendarMock.swift in Sources */,
 				DCCCF38F266C443C00954B4F /* Goal.swift in Sources */,
 				DCCCF397266C4F2500954B4F /* HealthDataRepositoryMock.swift in Sources */,
 				DC12FD4726681F0C00602376 /* DependencyContainerMock.swift in Sources */,
+				DC988D2D266CDC750073DF87 /* SummaryViewTests.swift in Sources */,
 				DC67B88F266985BA00BCA8BF /* GoalsRepositoryTests.swift in Sources */,
+				DC988D2F266CDCA50073DF87 /* SummaryViewStateTests.swift in Sources */,
+				DC988D2A266CDC510073DF87 /* ContentViewTests.swift in Sources */,
 				DCCCF399266C4FEE00954B4F /* GoalsUseCaseTests.swift in Sources */,
 				DCCCF3A6266C618700954B4F /* ContentViewStateTests.swift in Sources */,
+				DC988D28266CDC1F0073DF87 /* AwardsViewTests.swift in Sources */,
 				DCCCF3A9266C638400954B4F /* AwardsViewStateTests.swift in Sources */,
 				DC12FD4A2668228600602376 /* TestDependencyContainer.swift in Sources */,
 				DC67B88D2669827D00BCA8BF /* GoalsResponseMapperMock.swift in Sources */,
@@ -1151,6 +1189,14 @@
 				minimumVersion = 0.5.0;
 			};
 		};
+		DC988D20266CD79D0073DF87 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.9.0;
+			};
+		};
 		DCA67DE8266BFA8200308764 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/airbnb/lottie-ios.git";
@@ -1166,6 +1212,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC1926D5266B024C00873625 /* XCRemoteSwiftPackageReference "combine-schedulers" */;
 			productName = CombineSchedulers;
+		};
+		DC988D21266CD79D0073DF87 /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC988D20266CD79D0073DF87 /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
 		};
 		DCA67DE9266BFA8200308764 /* Lottie */ = {
 			isa = XCSwiftPackageProductDependency;
